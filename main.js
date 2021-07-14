@@ -16,7 +16,7 @@ app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname + "/public"));
-app.use(cookieParser())
+app.use(cookieParser());
 
 app.get('*', checkUser);
 app.get('/', (req, res) => res.render('index'));
@@ -24,5 +24,5 @@ app.use(authRoutes);
 
 // Port
 app.listen(PORT, () => {
-    console.log(`Listening on port ${PORT}`)
+    console.log(`Listening on port ${PORT}`);
 });

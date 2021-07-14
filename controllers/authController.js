@@ -82,5 +82,5 @@ module.exports.logout_get = (req, res) => {
 }
 
 module.exports.prot_test = (req, res) => {
-  res.render("userpage")
+  res.render("userpage");
 }
