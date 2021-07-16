@@ -1,5 +1,5 @@
-const jwt = require('jsonwebtoken');
-const User = require('../models/User');
+const jwt = require("jsonwebtoken");
+const User = require("../models/User");
 
 const requireAuth = (req, res, next) => {
   const token = req.cookies.jwt;
@@ -8,13 +8,13 @@ const requireAuth = (req, res, next) => {
   if (token) {
     jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
       if (err) {
-        res.redirect('/login');
+        res.redirect("/login");
       } else {
         next();
       }
     });
   } else {
-    res.redirect('/login');
+    res.redirect("/login");
   }
 };
 
@@ -38,5 +38,20 @@ const checkUser = (req, res, next) => {
   }
 };
 
+const notRequireAuth = (req, res, next) => {
+  const token = req.cookies.jwt;
 
-module.exports = { requireAuth, checkUser };
+  if (token) {
+    jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
+      if (err) {
+        res.cookie("jwt", "", { maxAge: 1 }).redirect("/login");
+      } else {
+        res.redirect("/app");
+      }
+    });
+  } else {
+    next();
+  }
+};
+
+module.exports = { requireAuth, checkUser, notRequireAuth };
