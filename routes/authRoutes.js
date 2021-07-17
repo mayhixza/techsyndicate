@@ -1,4 +1,3 @@
-const { requireAuth, checkUser } = require('../middleware/authMiddleware');
 const { Router } = require('express');
 
 const router = Router();
