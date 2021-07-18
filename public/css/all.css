@@ -1,0 +1,16 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {    
+  --black: #252525;
+  --white: #fefdf8;
+}
+
+/* NavBar */
+
+nav {
+    background-color: pink;
+}
