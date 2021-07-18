@@ -5,12 +5,36 @@
 }
 
 :root {    
-  --black: #252525;
+  /* --black: #252525; */
+  --black: #000;
   --white: #fefdf8;
 }
 
 /* NavBar */
 
 nav {
-    background-color: pink;
+  background-color: var(--black);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 3vh;
+  margin: auto 5vw;
+}
+
+.logo{
+  width: 8vw
+}
+
+ul {
+  display: flex;
+  align-items: center;
+}
+
+li a {
+  color: var(--white);
+  margin: 0 1.5vw;
+  font-size: 1.3vw;
+  text-decoration: none;
 }

@@ -3,31 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/all.css">
+  <link rel="stylesheet" href="css/login.css">
   <title>dTour- Login</title>
 </head>
 <body>
-
   <nav>
-    <img src="../assets/Logo.svg">
-    <ul>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Features</a></li>
-      <li><a href="#">Stories</a></li>
-      <li><a href="#">Contact</a></li>
-      <li><a href="#">Home</a></li>
-    </ul>
+    <div class="navbar">
+      <img src="../assets/Logo.svg" class="logo">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Features</a></li>
+        <li><a href="#">Stories</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
   </nav>
-    
-  <form action="/signup">
-    <h2>Login</h2>
-    <label for="email">Email</label>
-    <input type="text" name="email"  />
-    <div class="email error"></div>
-    <label for="password">Password</label>
-    <input type="password" name="password"  />
-    <div class="password error"></div>
-    <button>login</button>
-  </form>
+
+  <section class="form">    
+    <div class="login-container">
+      <img src="assets/loginalt.jpg" class="image">
+      <div class="form-container">
+        <form action="/signup">
+          <h2>Sign in</h2>
+          <label for="email">Email</label><br>
+          <input type="text" name="email"  />
+          <div class="email error"></div>
+          <label for="password">Password</label><br>
+          <input type="password" name="password"  />
+          <div class="password error"></div>
+          <button class="btn login-btn">Sign in</button>
+        </form>
+      </div>
+    </div>
+  </section>
 
 
   <script>

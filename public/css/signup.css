@@ -1,0 +1,69 @@
+:root {
+    --blue: #239ED5
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;    
+    height: 90vh
+}
+
+.signup-container {
+    display: flex;
+}
+
+.form-container {    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 30vw;
+    margin: auto;
+    padding: 2vw 3vw;
+    border-radius: 1.5vh;
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1), 0 6px 40px 0 rgba(0, 0, 0, 0.1);
+}
+
+form {
+}
+
+form h2 {
+    font-size: 3vw;
+    margin-bottom: 3vh;
+}
+
+form label {
+    font-size: 1.2vw;
+}
+
+form input {
+    margin-top: 0.8vh;
+    margin-bottom: 2vh;
+    padding: 1vh 25%;  
+    border: 2px solid var(--blue);
+    border-radius: 1vh;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.1), 0 2px 20px 0 rgba(0, 0, 0, 0.1);
+}
+    
+.btn {
+    margin-top: 3vh;
+    border: 0;
+    background-color: var(--blue);
+    color: var(--white);
+    padding: 1.5vh 3vw;
+    border-radius: 5px;   
+    font-size: 1vw 
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.image {
+    width: 42vw;
+    margin: 2vw 0;
+}
+
+.signup-container {
+
+}
