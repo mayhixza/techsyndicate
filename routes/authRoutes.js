@@ -130,7 +130,7 @@ function handleErrors(err) {
 
   if (err.message.includes("user validation failed")) {
     Object.values(err.errors).forEach(({ properties }) => {
-      errors[properties.path] = properties.message;
+      error = properties.message;
     });
   }
 
