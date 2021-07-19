@@ -60,6 +60,7 @@ router.post("/login", notRequireAuth, async (req, res) => {
   }
 });
 
+
 //AUTH Middleware
 function checkUser(req, res, next) {
   const token = req.cookies.jwt;
@@ -104,7 +105,7 @@ function notRequireAuth(req, res, next) {
       if (err) {
         res.cookie("jwt", "", { maxAge: 1 }).redirect("/auth/login");
       } else {
-        res.redirect("/app");
+        res.redirect("/");
       }
     });
   } else {
