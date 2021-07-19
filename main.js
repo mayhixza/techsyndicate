@@ -4,6 +4,7 @@ const PORT = process.env.PORT || 5000;
 const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/authRoutes");
+const businessRoutes= require("./routes/businessRoutes")
 
 const dotenv = require("dotenv");
 dotenv.config();
@@ -27,4 +28,5 @@ app.use(express.static(__dirname + "/public"));
 app.use(cookieParser());
 
 app.use("/auth", authRoutes);
+app.use("/business", businessRoutes);
 app.get("/", (req, res) => res.render("index"));
