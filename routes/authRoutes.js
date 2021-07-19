@@ -27,6 +27,14 @@ router.get("/detours", notRequireAuth, (req, res) => {
   res.render("detours");
 });
 
+router.get("/rewards", notRequireAuth, (req, res) => {
+  res.render("rewards");
+});
+
+router.get("/started", notRequireAuth, (req, res) => {
+  res.render("started");
+});
+
 //POST Routes
 router.post("/signup", notRequireAuth, async (req, res) => {
   let { name, email, buyer, password } = req.body;

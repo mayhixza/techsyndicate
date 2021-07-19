@@ -1,0 +1,59 @@
+:root {
+    --blue: #1A6DAA;
+}
+
+body {
+    text-align: center;
+}
+
+h1 {
+    font-size: 9vw;
+    margin: 2vh 0
+}
+
+p.desc {
+    font-size: 3.5vw;
+    margin-bottom: 2vh;
+}
+
+.reward-cards {    
+    margin-bottom: 6vh;
+}
+
+.card {
+    width: 75%;
+    margin: 4vh auto;
+    border-radius: 2vh;
+    padding: 2vh 2.5vh;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.1), 0 2px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+.product-img {
+    height: 20vh;
+    margin: 1vh 0;
+}
+
+.card h3 {
+    font-size: 3.5vw;
+    margin-top: 1vh;
+}
+
+.card p {
+    font-size: 2vh;
+    margin: 1vh 0;
+}
+
+.card .btn {
+    background-color: var(--blue);
+    border: 0;
+    padding: 1vh 2vh;
+    border-radius: 7px; 
+    margin-bottom: 1vh; 
+}
+
+.btn a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 3.4vw;
+}

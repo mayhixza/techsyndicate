@@ -1,0 +1,53 @@
+:root {
+    --greenn: #33B163;
+    --blue: #239ED5;
+    --text: #161A1D;
+}
+
+body {
+    color: var(--text)
+}
+
+.container {
+    height: 92vh;
+    text-align: center;
+}
+
+.check {
+    height: 20vh;
+    margin-top: 10vh;
+}
+
+h2 {
+    color: var(--greenn);
+    margin-top: 2.5vh;
+}
+
+.options {
+    text-align: left;
+    width: 78%;
+    margin : 0 auto;
+    margin-top: 10vh;
+}
+
+.options p {
+    font-size: 5vw;
+    margin-bottom: 1.7vh;
+}
+
+.btn {
+    background-color: var(--blue);
+    border: 0;
+    padding: 1.5vh 2vh;
+    border-radius: 3px; 
+    margin-bottom: 5vh; 
+    width: 100%;
+}
+
+.btn a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 4.1vw;
+}
+

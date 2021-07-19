@@ -3,13 +3,7 @@
     --blue: #1A6DAA;
 }
 
-body {
-    /* background-color: var(--bgwhite); */
-    /* background-color: red; */
-}
-
 .detours-container {
-    /* background-color: pink; */
     width: 90%;
     margin: 0 auto;
 }
