@@ -3,8 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/all.css" />
     <link rel="stylesheet" href="/css/login.css" />
+    <link rel="stylesheet" href="/css/all.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,500&display=swap" rel="stylesheet">
     <title>dTour- Login</title>
   </head>
   <body>
@@ -23,13 +25,10 @@
 
     <section class="form">
       <div class="login-container">
-        <img src="assets/loginalt.jpg" class="image" />
+        <img src="/assets/loginalt.jpg" class="image" />
         <div class="form-container">
-          <form method="POST" action="/auth/login">
+          <form action="/auth/signup">
             <h2>Sign in</h2>
-            <% if (error) { %>
-            <div class="err"><%= error %></div>
-            <% } %>
             <label for="email">Email</label><br />
             <input type="text" name="email" />
             <div class="email error"></div>
@@ -41,5 +40,42 @@
         </div>
       </div>
     </section>
+
+    <script>
+      const form = document.querySelector("form");
+      const emailError = document.querySelector(".email.error");
+      const passwordError = document.querySelector(".password.error");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        // reset errors
+        emailError.textContent = "";
+        passwordError.textContent = "";
+
+        // get values
+        const email = form.email.value;
+        const password = form.password.value;
+
+        try {
+          const res = await fetch("/auth/login", {
+            method: "POST",
+            body: JSON.stringify({ email, password }),
+            headers: { "Content-Type": "application/json" },
+          });
+          const data = await res.json();
+          data;
+          if (data.errors) {
+            emailError.textContent = data.errors.email;
+            passwordError.textContent = data.errors.password;
+          }
+          if (data.user) {
+            location.assign("/");
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      });
+    </script>
   </body>
 </html>

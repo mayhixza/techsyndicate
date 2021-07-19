@@ -10,6 +10,10 @@
   --white: #fefdf8;
 }
 
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
 /* NavBar */
 
 nav {
@@ -35,6 +39,6 @@ ul {
 li a {
   color: var(--white);
   margin: 0 1.5vw;
-  font-size: 1.3vw;
+  font-size: 1vw;
   text-decoration: none;
 }

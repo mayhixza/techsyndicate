@@ -23,6 +23,10 @@ router.get("/protected", requireAuth, (req, res) => {
   res.render("userpage");
 });
 
+router.get("/detours", notRequireAuth, (req, res) => {
+  res.render("detours");
+});
+
 //POST Routes
 router.post("/signup", notRequireAuth, async (req, res) => {
   let { name, email, buyer, password } = req.body;

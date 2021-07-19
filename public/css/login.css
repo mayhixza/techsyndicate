@@ -32,18 +32,19 @@ form {
 }
 
 form h2 {
-    font-size: 3vw;
+    font-size: 2.7vw;
     margin-bottom: 3vh;
 }
 
 form label {
-    font-size: 1.2vw;
+    font-size: 1vw;
 }
 
 form input {
     margin-top: 1vh;
     margin-bottom: 3vh;
-    padding: 1vh 25%;  
+    width: 22vw;
+    padding: 1vh 0.5vw;  
     border: 2px solid var(--green);
     border-radius: 1vh;
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.1), 0 2px 20px 0 rgba(0, 0, 0, 0.1);
@@ -55,9 +56,11 @@ form input {
     color: var(--white);
     padding: 1.5vh 3vw;
     border-radius: 5px;   
-    font-size: 1vw 
+    font-size: 1vw;
+    transition: all 0.2s;
 }
 
 .btn:hover {
     cursor: pointer;
+    transform: translateY(-3px);
 }
