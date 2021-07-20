@@ -4,7 +4,7 @@ const PORT = process.env.PORT || 5000;
 const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/authRoutes");
-const businessRoutes= require("./routes/businessRoutes")
+const businessRoutes = require("./routes/businessRoutes");
 
 const dotenv = require("dotenv");
 dotenv.config();
@@ -30,3 +30,15 @@ app.use(cookieParser());
 app.use("/auth", authRoutes);
 app.use("/business", businessRoutes);
 app.get("/", (req, res) => res.render("index"));
+
+app.get("/detours", (req, res) => {
+  res.render("detours");
+});
+
+app.get("/rewards", (req, res) => {
+  res.render("rewards");
+});
+
+app.get("/started", (req, res) => {
+  res.render("started");
+});

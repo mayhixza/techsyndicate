@@ -21,48 +21,48 @@
       </div>
     </nav>
 
-<form action="/business/create" method="POST">
-    <h2>Create</h2>
-    <label for="type">Delivery Type</label>
-    <select name="type">
-      <option value="food">Food</option>
-      <option value="package">Package</option>
-      <option value="mail">Mail</option>
-    </select>
-    <br>
-    <label for="fragile">Is the package fragile?</label>
-    <input type="checkbox" name="fragile"  />
-    <br>
-    <label for="pickLocation">Pick Location</label>
-    <input type="text" name="pickLocation"  id="pickLoc"/>
-    <br>
-    <label for="dropLocation">Drop Location</label>
-    <input type="text" name="dropLocation" id="dropLoc" />
-    <button>login</button>
-</form>
-  
+    <form action="/business/create" method="POST">
+      <h2>Create</h2>
+      <label for="type">Delivery Type</label>
+      <select name="type">
+        <option value="food">Food</option>
+        <option value="package">Package</option>
+        <option value="mail">Mail</option>
+      </select>
+      <br />
+      <label for="fragile">Is the package fragile?</label>
+      <input type="checkbox" name="fragile" />
+      <br />
+      <label for="pickLocation">Pick Location</label>
+      <input type="text" name="pickLocation" id="pickLoc" />
+      <br />
+      <label for="dropLocation">Drop Location</label>
+      <input type="text" name="dropLocation" id="dropLoc" />
+      <button>login</button>
+    </form>
 
-  <script>
-    let autoComplete;
-    function initAutoComplete() {
-      autoComplete = new google.maps.places.Autocomplete(
-        document.getElementById("pickLoc"),
-        {
-          fields: ['name']
-        }
-      );
-      autoComplete = new google.maps.places.Autocomplete(
-        document.getElementById("dropLoc"),
-        {
-          fields: ['name']
-        }
-      );
-    }
-  </script>
+    <script
+      async
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0KT1XAdPZPo8W25oy5FKCXPo3lFhT8pU&libraries=places&callback=initAutoComplete"
+    ></script>
+    <script>
+      let autoComplete;
+      function initAutoComplete() {
+        autoComplete = new google.maps.places.Autocomplete(
+          document.getElementById("pickLoc"),
+          {
+            fields: ["name"],
+          }
+        );
+        autoComplete = new google.maps.places.Autocomplete(
+          document.getElementById("dropLoc"),
+          {
+            fields: ["name"],
+          }
+        );
+      }
 
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0KT1XAdPZPo8W25oy5FKCXPo3lFhT8pU&libraries=places&callback=initAutoComplete">
-async
-</script>
-</body>
+      initAutoComplete();
+    </script>
+  </body>
 </html>
