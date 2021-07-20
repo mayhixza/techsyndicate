@@ -25,16 +25,16 @@ router.get("/protected", requireAuth, (req, res) => {
 
 //POST Routes
 router.post("/signup", notRequireAuth, async (req, res) => {
-  let { name, email, buyer, password } = req.body;
+  let { name, email, business, password } = req.body;
 
-  if (buyer === undefined) {
-    buyer = false;
+  if (business === undefined) {
+    business = false;
   } else {
-    buyer = true;
+    business = true;
   }
 
   try {
-    const user = await User.create({ name, email, buyer, password });
+    const user = await User.create({ name, email, business, password });
     const token = createToken(user._id);
     res
       .cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 })
@@ -59,7 +59,6 @@ router.post("/login", notRequireAuth, async (req, res) => {
     res.render("login", { error });
   }
 });
-
 
 //AUTH Middleware
 function checkUser(req, res, next) {

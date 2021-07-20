@@ -5,6 +5,9 @@ const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/authRoutes");
 const businessRoutes = require("./routes/businessRoutes");
+const travellerRoutes = require("./routes/travellerRoutes");
+const User = require("./models/User");
+const jwt = require("jsonwebtoken");
 
 const dotenv = require("dotenv");
 dotenv.config();
@@ -28,17 +31,28 @@ app.use(express.static(__dirname + "/public"));
 app.use(cookieParser());
 
 app.use("/auth", authRoutes);
-app.use("/business", businessRoutes);
+app.use("/business", routeToRespect, businessRoutes);
+app.use("/traveller", routeToRespect, travellerRoutes);
 app.get("/", (req, res) => res.render("index"));
 
-app.get("/detours", (req, res) => {
-  res.render("detours");
-});
+// Middleware
+function routeToRespect(req, res, next) {
+  const token = req.cookies.jwt;
 
-app.get("/rewards", (req, res) => {
-  res.render("rewards");
-});
-
-app.get("/started", (req, res) => {
-  res.render("started");
-});
+  if (token) {
+    jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
+      if (err) {
+        res.redirect("/auth/login");
+      } else {
+        const user = await User.findById(decodedToken.id);
+        if (user.business) {
+          next();
+        } else {
+          res.redirect("/traveller");
+        }
+      }
+    });
+  } else {
+    res.redirect("/auth/login");
+  }
+}

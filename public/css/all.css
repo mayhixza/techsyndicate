@@ -1,17 +1,27 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+@import url("https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900");
+
+:root {
+  --black: #161a1d;
+  --white: #fff;
+  --lightGrey: #f5f3f4;
+  --grey: #d3d3d3;
+  --lightBlue: #239ed5;
+  --blue: #308bad;
+  --darkBlue: #1a6daa;
+  --green: #33b163;
+  --lightGreen: #34be69;
+  --fade: rgba(22, 26, 29, 0.66);
+  --red: #c41846;
+  --yellow: #a8a81f;
 }
 
-:root {    
-  /* --black: #252525; */
-  --black: #000;
-  --white: #fefdf8;
-}
-
-body {
-  font-family: 'Montserrat', sans-serif;
+* {
+  padding: 0;
+  margin: 0;
+  outline: 0;
+  box-sizing: border-box;
+  font-family: Montserrat;
+  color: var(--black);
 }
 
 /* NavBar */
@@ -23,22 +33,31 @@ nav {
 .navbar {
   display: flex;
   justify-content: space-between;
-  padding: 3vh;
+  padding: 2vh;
   margin: auto 5vw;
 }
 
-.logo{
-  width: 8vw
+.logo {
+  width: 16vw;
 }
 
 ul {
   display: flex;
   align-items: center;
+  list-style-type: none;
 }
 
 li a {
   color: var(--white);
   margin: 0 1.5vw;
-  font-size: 1vw;
+  font-size: 2.3vw;
   text-decoration: none;
+}
+.bottomNav {
+  background: var(--black);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 7vh;
 }
