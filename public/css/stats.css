@@ -1,0 +1,55 @@
+:root {
+  --blue: #239ED5;
+}
+
+body {
+  background-color: #F5F3F4;
+}
+
+.container {
+  margin-top: 4vh;
+  margin-bottom: 5vh;
+}
+
+.card {
+  background-color: white;
+  padding: 2vh 3vh;
+  margin: 3vh 5vw;
+  border-radius: 13px;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+p {
+  font-size: 6vw;
+}
+
+table, td, th {
+  border: 1px solid black;
+}
+
+table {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+  margin: 2vh auto;
+}
+
+tr {
+  width: 2vw;
+}
+
+.card .btn {
+  background-color: #239ED5;
+  border: 0;
+  width: 100%;
+  padding: 1vh 2vh;
+  border-radius: 4px; 
+  margin-bottom: 1vh; 
+}
+
+.btn a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 3.7vw;
+}
