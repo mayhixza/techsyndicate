@@ -1,3 +1,6 @@
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -8,9 +11,6 @@ const businessRoutes = require("./routes/businessRoutes");
 const travellerRoutes = require("./routes/travellerRoutes");
 const User = require("./models/User");
 const jwt = require("jsonwebtoken");
-
-const dotenv = require("dotenv");
-dotenv.config();
 
 // DB CONNECTION
 async function connectDB() {
@@ -34,6 +34,7 @@ app.use("/auth", authRoutes);
 app.use("/business", routeToBusiness, businessRoutes);
 app.use("/traveller", routeToTraveller, travellerRoutes);
 app.get("/", (req, res) => res.render("landing"));
+app.get("*", (req, res) => res.send("<h1>404</h1>"));
 
 // Middleware
 function routeToBusiness(req, res, next) {

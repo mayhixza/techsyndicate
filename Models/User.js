@@ -23,6 +23,10 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
+  rewards: {
+    type: Number,
+    required: true,
+  },
 });
 
 userSchema.pre("save", async function (next) {

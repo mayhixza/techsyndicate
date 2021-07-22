@@ -44,7 +44,7 @@ router.post("/signup", notRequireAuth, async (req, res) => {
     const token = createToken(user._id);
     res
       .cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 })
-      .redirect("/");
+      .redirect(business ? "/business" : "/traveller");
   } catch (err) {
     const error = handleErrors(err);
     return res.render("signup", { error });
@@ -59,7 +59,7 @@ router.post("/login", notRequireAuth, async (req, res) => {
     const token = createToken(user._id);
     res
       .cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 })
-      .redirect("/");
+      .redirect(user.business ? "/business" : "/traveller");
   } catch (err) {
     const error = handleErrors(err);
     res.render("login", { error });

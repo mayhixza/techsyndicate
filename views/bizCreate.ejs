@@ -10,7 +10,8 @@
         box-sizing: border-box;
       }
 
-      #livesearchpick,#livesearchdrop {
+      #livesearchpick,
+      #livesearchdrop {
         background-color: gainsboro;
         border-color: black;
         border-width: thin;
@@ -60,30 +61,47 @@
       <input type="checkbox" name="fragile" />
       <br />
       <label for="pickLocation">Pick Location</label>
-      <input type="text" name="pickLocation" id="pickLoc" onkeyup="result(this.value, 'livesearchpick')"/>
+      <input
+        type="text"
+        name="pickLocation"
+        id="pickLoc"
+        onkeyup="result(this.value, 'livesearchpick', true)"
+      />
       <div id="livesearchpick" class="hide"></div>
       <br />
       <label for="dropLocation">Drop Location</label>
-      <input type="text" name="dropLocation" id="dropLoc" onkeyup="result(this.value, 'livesearchdrop')"/>
+      <input
+        type="text"
+        name="dropLocation"
+        id="dropLoc"
+        onkeyup="result(this.value, 'livesearchdrop', false)"
+      />
+      <div class="err"></div>
       <div id="livesearchdrop" class="hide"></div>
       <button>login</button>
     </form>
 
     <script>
       let res;
-      let timeout; 
-      function result(str,id) {
-        if(timeout) {clearTimeout(timeout)}
-        timeout = setTimeout(function(){ showResult(str,id); }, 1500);
+      let timeout;
+      function result(str, id, pick) {
+        if (timeout) {
+          clearTimeout(timeout);
+        }
+        timeout = setTimeout(function () {
+          showResult(str, id, pick);
+          console.log("showim");
+        }, 1500);
       }
-      function showResult(str,id) {
-        res = document.getElementById(id);
-        res.innerHTML = "";
+      function showResult(str, id, pick) {
+        // res = document.getElementById(id);
+        // res.innerHTML = "";
         if (str.length <= 3) {
-          res.classList.add("hide");
+          // res.classList.add("hide");
+          document.querySelector(".err").textContent = "Small address";
           return;
         }
-        res.classList.remove("hide");
+        // res.classList.remove("hide");
         $.ajax({
           url: `/business/search?srch=${str}`,
           method: "POST",
@@ -91,8 +109,11 @@
           data: JSON.stringify({ search: str }),
           success: function (result) {
             result.forEach((element) => {
-              res.innerHTML +=
-                element.placeName + ", " + element.placeAddress + "<br>";
+              pick
+                ? (document.querySelector("#pickLoc").value =
+                    element.placeName + ", " + element.placeAddress)
+                : (document.querySelector("#dropLoc").value =
+                    element.placeName + ", " + element.placeAddress);
             });
           },
         });

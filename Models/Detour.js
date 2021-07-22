@@ -22,6 +22,14 @@ const detourSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  // distance: {
+  //   type: Number,
+  //   required: true,
+  // },
+  // reward: {
+  //   type: Number,
+  //   required: true,
+  // },
 });
 
 const Detour = mongoose.model("detour", detourSchema);
