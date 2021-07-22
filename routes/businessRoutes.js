@@ -28,59 +28,64 @@ router.post("/create", async (req, res) => {
   const id = jwt.decode(req.cookies.jwt).id;
   let { type, fragile, pickLocation, dropLocation } = req.body;
 
-  const data = await fetch(
-    `https://atlas.mapmyindia.com/api/places/geocode?address=${pickLocation}`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer b4230734-0bcb-4b2d-bda5-a12b2f4b9066",
-      },
-    }
-  );
-  const json = await data.json();
-  pickLocation = json.copResults.eLoc;
+  // const data = await fetch(
+  //   `https://atlas.mapmyindia.com/api/places/geocode?address=${pickLocation}`,
+  //   {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: "Bearer b4230734-0bcb-4b2d-bda5-a12b2f4b9066",
+  //     },
+  //   }
+  // );
+  // const json = await data.json();
+  // pickLocation = json.copResults.eLoc;
 
-  const data2 = await fetch(
-    `https://atlas.mapmyindia.com/api/places/geocode?address=${dropLocation}`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer b4230734-0bcb-4b2d-bda5-a12b2f4b9066",
-      },
-    }
-  );
-  dropLocation = await data2.json();
-  dropLocation = dropLocation.copResults.eLoc;
+  // const data2 = await fetch(
+  //   `https://atlas.mapmyindia.com/api/places/geocode?address=${dropLocation}`,
+  //   {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: "Bearer b4230734-0bcb-4b2d-bda5-a12b2f4b9066",
+  //     },
+  //   }
+  // );
+  // dropLocation = await data2.json();
+  // dropLocation = dropLocation.copResults.eLoc;
 
   if (fragile === undefined) {
     fragile = false;
   } else {
     fragile = true;
   }
-
+  pickLocation = "NUS56A";
+  dropLocation = "NTXV52";
   const distance = 0;
-  const distData = await fetch(
-    `https://atlas.mapmyindia.com/b4230734-0bcb-4b2d-bda5-a12b2f4b9066/distance_matrix/biking/${pickLocation};${dropLocation}`
-  );
-  console.log(distData);
+  
+  // const distData = await fetch(`https://apis.mapmyindia.com/advancedmaps/v1/1552cd216febc8bf1934938997aaf215/distance_matrix/driving/${pickLocation}%3B${dropLocation}?region=IND&sources=0`, {
+  //   method: 'GET',
+  //   headers: { 'Content-Type': 'application/json' , 'Authorization': 'Bearer b4230734-0bcb-4b2d-bda5-a12b2f4b9066'},
+  // });
+  // let a = await distData.json();
+  // let distInt = a.results.distances[0][1];
+  let distInt = 125; //In Meters
   // const disJson = await distData.json();
 
-  try {
-    const detour = await Detour.create({
-      type,
-      fragile,
-      pickLocation,
-      dropLocation,
-      bizID: id,
-      distance: distance,
-    });
-    return res.redirect("/business");
-  } catch (err) {
-    console.log(err);
-    return res.render("bizCreate", { error });
-  }
+  // try {
+  //   const detour = await Detour.create({
+  //     type,
+  //     fragile,
+  //     pickLocation,
+  //     dropLocation,
+  //     bizID: id,
+  //     distance: distance,
+  //   });
+  //   return res.redirect("/business");
+  // } catch (err) {
+  //   console.log(err);
+  //   return res.render("bizCreate", { error });
+  // }
 });
 
 router.post("/search", async (req, res) => {
