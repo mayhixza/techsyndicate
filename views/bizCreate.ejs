@@ -57,7 +57,7 @@
         id="pickLoc"
         onkeyup="result(this.value, 'livesearchpick', true)"
       />
-      <div id="livesearchpick" class="hide"></div>
+      <div class="dropdownPick"></div>
       <br />
       <label for="dropLocation">Drop Location</label>
       <input
@@ -66,6 +66,7 @@
         id="dropLoc"
         onkeyup="result(this.value, 'livesearchdrop', false)"
       />
+      <div class="dropdownDrop"></div>
       <div class="err"></div>
       <div id="livesearchdrop" class="hide"></div>
       <button>login</button>
@@ -80,7 +81,6 @@
         }
         timeout = setTimeout(function () {
           showResult(str, id, pick);
-          console.log("showim");
         }, 1500);
       }
       function showResult(str, id, pick) {
@@ -99,11 +99,25 @@
           data: JSON.stringify({ search: str }),
           success: function (result) {
             result.forEach((element) => {
-              pick
-                ? (document.querySelector("#pickLoc").value =
-                    element.placeName + ", " + element.placeAddress)
-                : (document.querySelector("#dropLoc").value =
-                    element.placeName + ", " + element.placeAddress);
+              const div = document.createElement("DIV");
+              div.textContent = element.placeName + ", " + element.placeAddress;
+              if (pick) {
+                document.querySelector(".dropdownPick").append(div);
+              } else {
+                document.querySelector(".dropdownDrop").append(div);
+              }
+
+              for (let div of document.querySelectorAll(".dropdownPick div")) {
+                div.addEventListener("click", () => {
+                  document.querySelector("#pickLoc").value = div.textContent;
+                });
+              }
+
+              for (let div of document.querySelectorAll(".dropdownDrop div")) {
+                div.addEventListener("click", () => {
+                  document.querySelector("#dropLoc").value = div.textContent;
+                });
+              }
             });
           },
         });
