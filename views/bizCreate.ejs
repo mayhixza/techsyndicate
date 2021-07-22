@@ -60,8 +60,11 @@
       <input type="checkbox" name="fragile" />
       <br />
       <label for="pickLocation">Pick Location</label>
-      <input type="text" name="pickLocation" id="pickLoc" onkeyup="showResult(this.value)"/>
-      <div id="livesearch" class="hide"></div>
+      <input type="text" name="pickLocation" id="pickLoc" />
+      <h3 onclick="showResult(document.getElementById('pickLoc').value)">
+        search
+      </h3>
+      <div id="livesearch"></div>
       <br />
       <label for="dropLocation">Drop Location</label>
       <input type="text" name="dropLocation" id="dropLoc" />
@@ -69,25 +72,27 @@
     </form>
 
     <script>
-        let search = document.getElementById("livesearch")
+      let res = document.getElementById("livesearch");
 
-        function showResult(str){
-          search.innerHTML = "";
-          if(str.length <= 3) {search.classList.add("hide");return;}
-          search.classList.remove("hide");
-          $.ajax({
-              url: `/business/search?srch=${str}`,
-              method: "POST",
-              contentType: "application/json",
-              data: JSON.stringify({search: str}),
-              success: function(result){
-                result.forEach(element => {
-                  search.innerHTML += element.placeName + ", " + element.placeAddress + "<br>";
-                });
-              }
-          });
+      function showResult(str) {
+        console.log("Heyyyy");
+        res.innerHTML = "";
+        if (str.length <= 3) {
+          return;
+        }
+        $.ajax({
+          url: `/business/search?srch=${str}`,
+          method: "POST",
+          contentType: "application/json",
+          data: JSON.stringify({ search: str }),
+          success: function (result) {
+            result.forEach((element) => {
+              res.innerHTML +=
+                element.placeName + ", " + element.placeAddress + "<br>";
+            });
+          },
+        });
       }
-
     </script>
   </body>
 </html>
