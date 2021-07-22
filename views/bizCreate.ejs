@@ -80,6 +80,13 @@
           clearTimeout(timeout);
         }
         timeout = setTimeout(function () {
+          for (let div of document.querySelectorAll(".dropdownPick div")) {
+            div.remove();
+          }
+
+          for (let div of document.querySelectorAll(".dropdownDrop div")) {
+            div.remove();
+          }
           showResult(str, id, pick);
         }, 1500);
       }
