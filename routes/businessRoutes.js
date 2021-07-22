@@ -11,6 +11,14 @@ router.get('/create', (req, res) => {
     res.render("bizCreate");
 });
 
+router.get("/setup-detour", (req, res) => {
+    res.render("business/setup-detour");
+});
+
+router.get("/listed", (req, res) => {
+    res.render("business/listed");
+});
+
 //POST Routes
 router.post("/create", async (req, res) => {
     const id = jwt.decode(req.cookies.jwt).id;
