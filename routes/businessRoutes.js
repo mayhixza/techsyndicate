@@ -27,6 +27,35 @@ router.get("/", (req, res) => {
 router.post("/create", async (req, res) => {
   const id = jwt.decode(req.cookies.jwt).id;
   let { type, fragile, pickLocation, dropLocation } = req.body;
+  console.log(dropLocation);
+
+  const data = await fetch(
+    `https://atlas.mapmyindia.com/api/places/geocode?address=${pickLocation}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer b4230734-0bcb-4b2d-bda5-a12b2f4b9066",
+      },
+    }
+  );
+  const json = await data.json();
+  pickLocation = json.eLoc;
+
+  const data2 = await fetch(
+    `https://atlas.mapmyindia.com/api/places/geocode?address=${dropLocation}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer b4230734-0bcb-4b2d-bda5-a12b2f4b9066",
+      },
+    }
+  );
+  const json2 = await data2.json();
+  dropLocation = json2.eLoc;
+
+  console.log(dropLocation);
 
   if (fragile === undefined) {
     fragile = false;
@@ -42,9 +71,9 @@ router.post("/create", async (req, res) => {
       dropLocation,
       bizID: id,
     });
-    return res.redirect("/");
+    return res.redirect("/business");
   } catch (err) {
-    const error = handleErrors(err);
+    console.log(err);
     return res.render("bizCreate", { error });
   }
 });
