@@ -31,7 +31,7 @@ app.use(express.static(__dirname + "/public"));
 app.use(cookieParser());
 
 app.use("/auth", authRoutes);
-app.use("/business", routeToRespect, businessRoutes);
+app.use("/business", businessRoutes);
 app.use("/traveller", routeToRespect, travellerRoutes);
 app.get("/", (req, res) => res.render("index"));
 

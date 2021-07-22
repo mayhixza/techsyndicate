@@ -5,6 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/all.css" />
     <link rel="stylesheet" href="/css/login.css" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      #livesearch {
+        background-color: gainsboro;
+        border-color: black;
+        border-width: thin;
+        border-style: solid;
+        width: 500px;
+        font-size: 10px;
+      }
+
+      .hide {
+        display: none;
+      }
+
+      a:link,
+      :visited,
+      :hover,
+      :active {
+        color: black;
+      }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>dTour- Login</title>
   </head>
   <body>
@@ -34,35 +60,34 @@
       <input type="checkbox" name="fragile" />
       <br />
       <label for="pickLocation">Pick Location</label>
-      <input type="text" name="pickLocation" id="pickLoc" />
+      <input type="text" name="pickLocation" id="pickLoc" onkeyup="showResult(this.value)"/>
+      <div id="livesearch" class="hide"></div>
       <br />
       <label for="dropLocation">Drop Location</label>
       <input type="text" name="dropLocation" id="dropLoc" />
       <button>login</button>
     </form>
 
-    <script
-      async
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0KT1XAdPZPo8W25oy5FKCXPo3lFhT8pU&libraries=places&callback=initAutoComplete"
-    ></script>
     <script>
-      let autoComplete;
-      function initAutoComplete() {
-        autoComplete = new google.maps.places.Autocomplete(
-          document.getElementById("pickLoc"),
-          {
-            fields: ["name"],
-          }
-        );
-        autoComplete = new google.maps.places.Autocomplete(
-          document.getElementById("dropLoc"),
-          {
-            fields: ["name"],
-          }
-        );
+        let search = document.getElementById("livesearch")
+
+        function showResult(str){
+          search.innerHTML = "";
+          if(str.length <= 3) {search.classList.add("hide");return;}
+          search.classList.remove("hide");
+          $.ajax({
+              url: `/business/search?srch=${str}`,
+              method: "POST",
+              contentType: "application/json",
+              data: JSON.stringify({search: str}),
+              success: function(result){
+                result.forEach(element => {
+                  search.innerHTML += element.placeName + ", " + element.placeAddress + "<br>";
+                });
+              }
+          });
       }
 
-      initAutoComplete();
     </script>
   </body>
 </html>
