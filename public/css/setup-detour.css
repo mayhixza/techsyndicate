@@ -23,15 +23,19 @@
     box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1), 0 6px 40px 0 rgba(0, 0, 0, 0.1);
 }
 
+.image {
+    width: 75vw;
+}
+
 h1 {
-    margin-top: 10vh;
-    font-size: 8vw;
+    margin-top: 2vh;
+    font-size: 9vw;
 }
 
 .input-wrap {
     max-width: 80%;
     margin: auto;
-    margin-top: 5vh;
+    margin-top: 3vh;
 }
 
 .input-icons i {

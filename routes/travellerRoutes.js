@@ -26,10 +26,6 @@ router.get("/welcome", (req, res) => {
   res.render("traveller/welcome");
 });
 
-router.get("/setup-detour", (req, res) => {
-  res.render("business/setup-detour");
-});
-
 //POST
 router.post("/search", async (req, res) => {
   // const arr = [];
