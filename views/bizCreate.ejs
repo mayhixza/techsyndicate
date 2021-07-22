@@ -10,7 +10,7 @@
         box-sizing: border-box;
       }
 
-      #livesearch {
+      #livesearchpick,#livesearchdrop {
         background-color: gainsboro;
         border-color: black;
         border-width: thin;
@@ -60,26 +60,30 @@
       <input type="checkbox" name="fragile" />
       <br />
       <label for="pickLocation">Pick Location</label>
-      <input type="text" name="pickLocation" id="pickLoc" />
-      <h3 onclick="showResult(document.getElementById('pickLoc').value)">
-        search
-      </h3>
-      <div id="livesearch"></div>
+      <input type="text" name="pickLocation" id="pickLoc" onkeyup="result(this.value, 'livesearchpick')"/>
+      <div id="livesearchpick" class="hide"></div>
       <br />
       <label for="dropLocation">Drop Location</label>
-      <input type="text" name="dropLocation" id="dropLoc" />
+      <input type="text" name="dropLocation" id="dropLoc" onkeyup="result(this.value, 'livesearchdrop')"/>
+      <div id="livesearchdrop" class="hide"></div>
       <button>login</button>
     </form>
 
     <script>
-      let res = document.getElementById("livesearch");
-
-      function showResult(str) {
-        console.log("Heyyyy");
+      let res;
+      let timeout; 
+      function result(str,id) {
+        if(timeout) {clearTimeout(timeout)}
+        timeout = setTimeout(function(){ showResult(str,id); }, 1500);
+      }
+      function showResult(str,id) {
+        res = document.getElementById(id);
         res.innerHTML = "";
         if (str.length <= 3) {
+          res.classList.add("hide");
           return;
         }
+        res.classList.remove("hide");
         $.ajax({
           url: `/business/search?srch=${str}`,
           method: "POST",
