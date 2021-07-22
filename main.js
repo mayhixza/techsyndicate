@@ -31,9 +31,9 @@ app.use(express.static(__dirname + "/public"));
 app.use(cookieParser());
 
 app.use("/auth", authRoutes);
-app.use("/business", routeToBusiness, businessRoutes);
-app.use("/traveller", routeToTraveller, travellerRoutes);
-app.get("/", (req, res) => res.render("index"));
+app.use("/business", businessRoutes);
+app.use("/traveller", travellerRoutes);
+app.get("/", (req, res) => res.render("landing"));
 
 // Middleware
 function routeToBusiness(req, res, next) {
