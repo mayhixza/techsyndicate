@@ -31,12 +31,12 @@ app.use(express.static(__dirname + "/public"));
 app.use(cookieParser());
 
 app.use("/auth", authRoutes);
-app.use("/business", businessRoutes);
-app.use("/traveller", routeToRespect, travellerRoutes);
+app.use("/business", routeToBusiness, businessRoutes);
+app.use("/traveller", routeToTraveller, travellerRoutes);
 app.get("/", (req, res) => res.render("index"));
 
 // Middleware
-function routeToRespect(req, res, next) {
+function routeToBusiness(req, res, next) {
   const token = req.cookies.jwt;
 
   if (token) {
@@ -49,6 +49,26 @@ function routeToRespect(req, res, next) {
           next();
         } else {
           res.redirect("/traveller");
+        }
+      }
+    });
+  } else {
+    res.redirect("/auth/login");
+  }
+}
+function routeToTraveller(req, res, next) {
+  const token = req.cookies.jwt;
+
+  if (token) {
+    jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
+      if (err) {
+        res.redirect("/auth/login");
+      } else {
+        const user = await User.findById(decodedToken.id);
+        if (!user.business) {
+          next();
+        } else {
+          res.redirect("/business");
         }
       }
     });

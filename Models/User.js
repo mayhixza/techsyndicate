@@ -19,6 +19,10 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
+  inDetour: {
+    type: Boolean,
+    required: true,
+  },
 });
 
 userSchema.pre("save", async function (next) {

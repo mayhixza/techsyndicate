@@ -34,7 +34,13 @@ router.post("/signup", notRequireAuth, async (req, res) => {
   }
 
   try {
-    const user = await User.create({ name, email, business, password });
+    const user = await User.create({
+      name,
+      email,
+      business,
+      password,
+      inDetour: false,
+    });
     const token = createToken(user._id);
     res
       .cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 })

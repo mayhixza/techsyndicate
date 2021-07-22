@@ -21,7 +21,7 @@ const detourSchema = new mongoose.Schema({
   bizID: {
     type: String,
     required: true,
-  }
+  },
 });
 
 const Detour = mongoose.model("detour", detourSchema);
