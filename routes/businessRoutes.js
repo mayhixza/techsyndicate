@@ -27,7 +27,6 @@ router.get("/", (req, res) => {
 router.post("/create", async (req, res) => {
   const id = jwt.decode(req.cookies.jwt).id;
   let { type, fragile, pickLocation, dropLocation } = req.body;
-  console.log(dropLocation);
 
   const data = await fetch(
     `https://atlas.mapmyindia.com/api/places/geocode?address=${pickLocation}`,
@@ -40,7 +39,7 @@ router.post("/create", async (req, res) => {
     }
   );
   const json = await data.json();
-  pickLocation = json.eLoc;
+  pickLocation = json.copResults.eLoc;
 
   const data2 = await fetch(
     `https://atlas.mapmyindia.com/api/places/geocode?address=${dropLocation}`,
@@ -52,16 +51,21 @@ router.post("/create", async (req, res) => {
       },
     }
   );
-  const json2 = await data2.json();
-  dropLocation = json2.eLoc;
-
-  console.log(dropLocation);
+  dropLocation = await data2.json();
+  dropLocation = dropLocation.copResults.eLoc;
 
   if (fragile === undefined) {
     fragile = false;
   } else {
     fragile = true;
   }
+
+  const distance = 0;
+  const distData = await fetch(
+    `https://atlas.mapmyindia.com/b4230734-0bcb-4b2d-bda5-a12b2f4b9066/distance_matrix/biking/${pickLocation};${dropLocation}`
+  );
+  console.log(distData);
+  // const disJson = await distData.json();
 
   try {
     const detour = await Detour.create({
@@ -70,6 +74,7 @@ router.post("/create", async (req, res) => {
       pickLocation,
       dropLocation,
       bizID: id,
+      distance: distance,
     });
     return res.redirect("/business");
   } catch (err) {
