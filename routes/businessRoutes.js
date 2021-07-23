@@ -7,6 +7,10 @@ const User = require("../models/User");
 const router = Router();
 
 //GET Routes
+router.get("/", (req, res) => {
+  res.render("business/stats");
+});
+
 router.get("/create", (req, res) => {
   res.render("bizCreate");
 });
@@ -17,10 +21,6 @@ router.get("/setup-detour", (req, res) => {
 
 router.get("/listed", (req, res) => {
   res.render("business/listed");
-});
-
-router.get("/", (req, res) => {
-  res.render("business/stats");
 });
 
 //POST Routes

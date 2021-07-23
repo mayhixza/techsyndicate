@@ -1,77 +1,87 @@
 :root {
-    --greenn: #33B163;
-    --blue: #239ED5;
-    --text: #161A1D;
+  --greenn: #33b163;
+  --blue: #239ed5;
+  --text: #161a1d;
 }
-
+body {
+  height: 100vh;
+  overflow: hidden;
+}
 .container {
-    text-align: center;
-    height: 95vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: #F5F3F4;
+  text-align: center;
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #f5f3f4;
 }
 
 .wrap {
-    width: 80vw;
-    margin: 0 auto;
-    height: 58%;
-    border-radius: 10px;
-    background-color: white;
-    z-index: 5;
-    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1), 0 6px 40px 0 rgba(0, 0, 0, 0.1);
+  width: 80vw;
+  margin: 0 auto;
+  height: 58%;
+  border-radius: 10px;
+  background-color: white;
+  z-index: 5;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1), 0 6px 40px 0 rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
 .image {
-    width: 75vw;
+  position: absolute;
+  top: -4px;
+  left: 6px;
+  width: 75vw;
 }
 
 h1 {
-    margin-top: 2vh;
-    font-size: 10vw;
+  margin-top: 12vh;
+  font-size: 10vw;
 }
 
 .input-wrap {
-    max-width: 80%;
-    margin: auto;
-    margin-top: 5vh;
+  max-width: 80%;
+  margin: auto;
+  margin-top: 5vh;
 }
 
 .input-icons i {
-    position: absolute;
+  position: absolute;
 }
-          
+
 .input-icons {
-    width: 100%;
-    margin-bottom: 3vh;
+  width: 100%;
+  margin-bottom: 3vh;
 }
-          
+
 .input-field {
-    padding: 0.8vh 2vh;
-    padding-left: 10vw;
-    margin: 1.5vh 0;
-    border-radius: 8px;
-    border: 2.5px solid var(--blue);
-    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1), 0 6px 40px 0 rgba(0, 0, 0, 0.1);
+  width: 100%;
+  padding: 0.8vh 2vh;
+  padding-left: 10vw;
+  margin: 1.5vh 0;
+  border-radius: 8px;
+  border: 2.5px solid var(--blue);
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1), 0 6px 40px 0 rgba(0, 0, 0, 0.1);
 }
 
 .icon {
-    padding: 2.5vh 0.5vh;
-    min-width: 40px;
+  padding: 2.5vh 0.5vh;
+  min-width: 40px;
 }
 
 .btn {
-    background-color: var(--blue);
-    border: 0;
-    padding: 1vh 3vh;
-    border-radius: 5px; 
-    margin-bottom: 5vh; 
+  background-color: var(--blue);
+  border: 0;
+  padding: 1vh 3vh;
+  border-radius: 5px;
+  margin-bottom: 5vh;
+  margin-top: 3vh;
+  color: #fff;
 }
 
 .btn a {
-    color: var(--white);
-    text-decoration: none;
-    font-weight: 400;
-    font-size: 3vw;
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 3vw;
 }
