@@ -19,7 +19,6 @@ body {
 .wrap {
   width: 80vw;
   margin: 0 auto;
-  height: 58%;
   border-radius: 10px;
   background-color: white;
   z-index: 5;
@@ -37,12 +36,12 @@ body {
 h1 {
   margin-top: 12vh;
   font-size: 10vw;
+  margin-bottom: 3vh;
 }
 
 .input-wrap {
   max-width: 80%;
   margin: auto;
-  margin-top: 5vh;
 }
 
 .input-icons i {
@@ -58,14 +57,13 @@ h1 {
   width: 100%;
   padding: 0.8vh 2vh;
   padding-left: 10vw;
-  margin: 1.5vh 0;
   border-radius: 8px;
   border: 2.5px solid var(--blue);
   box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1), 0 6px 40px 0 rgba(0, 0, 0, 0.1);
 }
 
 .icon {
-  padding: 2.5vh 0.5vh;
+  padding: 1vh 0.5vh;
   min-width: 40px;
 }
 
@@ -84,4 +82,35 @@ h1 {
   text-decoration: none;
   font-weight: 400;
   font-size: 3vw;
+}
+
+/* dropdown */
+.input {
+  position: relative;
+  margin: 3vh 0;
+}
+.dropdown {
+  position: absolute;
+  left: 0;
+  top: 101%;
+  z-index: 9;
+  border-radius: 10px;
+  width: 100%;
+  background-color: #fff;
+  border: 2.5px solid var(--blue);
+}
+.dropdown div {
+  font-size: 1.4vh;
+  padding: 1vh 0;
+  border-bottom: 1px solid var(--fade);
+}
+.gayab {
+  display: none;
+  pointer-events: none;
+}
+.err {
+  color: #fff;
+}
+.showErr {
+  color: var(--red);
 }

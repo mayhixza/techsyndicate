@@ -71,26 +71,32 @@
         <h1>Welcome, traveller</h1>
         <div class="input-wrap">
           <form class="input-icons" action="/traveller" method="POST">
-            <i class="fa fa-map-pin icon"></i>
-            <input
-              class="input-field"
-              type="text"
-              placeholder="Enter start location"
-              id="pickLoc"
-              name="pickLocation"
-              onkeyup="result(this.value, 'livesearchpick', true)"
-            /><br />
-            <div class="dropdownPick"></div>
-            <i class="fa fa-map-marker icon"></i>
-            <input
-              class="input-field"
-              type="text"
-              id="dropLoc"
-              name="dropLocation"
-              placeholder="Enter end location"
-              onkeyup="result(this.value, 'livesearchdrop', false)"
-            />
-            <div class="dropdownDrop"></div>
+            <h6 class="err">Address too Small</h6>
+            <div class="input">
+              <i class="fa fa-map-pin icon"></i>
+              <input
+                class="input-field"
+                type="text"
+                placeholder="Enter start location"
+                id="pickLoc"
+                name="pickLocation"
+                onkeyup="result(this.value, 'livesearchpick', true)"
+              /><br />
+              <div class="dropdown dropdownPick gayab"></div>
+            </div>
+
+            <div class="input">
+              <i class="fa fa-map-marker icon"></i>
+              <input
+                class="input-field"
+                type="text"
+                id="dropLoc"
+                name="dropLocation"
+                placeholder="Enter end location"
+                onkeyup="result(this.value, 'livesearchdrop', false)"
+              />
+              <div class="dropdown dropdownDrop gayab"></div>
+            </div>
 
             <input type="text" name="pickeLoc" style="display: none" />
             <input type="text" name="dropeLoc" style="display: none" />
@@ -124,8 +130,19 @@
         // res.innerHTML = "";
         if (str.length <= 3) {
           // res.classList.add("hide");
-          document.querySelector(".err").textContent = "Small address";
+          document.querySelector(".err").classList.add("showErr");
+          for (let div of document.querySelectorAll(".dropdownPick div")) {
+            div.remove();
+          }
+          for (let div of document.querySelectorAll(".dropdownDrop div")) {
+            div.remove();
+          }
+          document.querySelector(".dropdownPick").classList.add("gayab");
+          document.querySelector(".dropdownDrop").classList.add("gayab");
+
           return;
+        } else {
+          document.querySelector(".err").classList.remove("showErr");
         }
         // res.classList.remove("hide");
         $.ajax({
@@ -140,8 +157,14 @@
               div.id = element.eLoc;
               if (pick) {
                 document.querySelector(".dropdownPick").append(div);
+                document
+                  .querySelector(".dropdownPick")
+                  .classList.remove("gayab");
               } else {
                 document.querySelector(".dropdownDrop").append(div);
+                document
+                  .querySelector(".dropdownDrop")
+                  .classList.remove("gayab");
               }
 
               for (let div of document.querySelectorAll(".dropdownPick div")) {
@@ -149,6 +172,8 @@
                   document.querySelector("#pickLoc").value = div.textContent;
                   document.querySelector("input[name='pickeLoc']").value =
                     div.id;
+
+                  div.parentElement.classList.add("gayab");
                 });
               }
 
@@ -157,6 +182,8 @@
                   document.querySelector("#dropLoc").value = div.textContent;
                   document.querySelector("input[name='dropeLoc']").value =
                     div.id;
+
+                  div.parentElement.classList.add("gayab");
                 });
               }
             });
