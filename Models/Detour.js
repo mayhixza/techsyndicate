@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const bcrypt = require("./node_modules/bcrypt");
+const bcrypt = require("bcrypt");
 
 const detourSchema = new mongoose.Schema({
   type: {
