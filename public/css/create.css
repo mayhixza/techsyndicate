@@ -1,0 +1,19 @@
+h1 {
+  font-size: 4vh;
+}
+i {
+  color: var(--fade);
+}
+input,
+select {
+  font-size: 1.4vh;
+}
+.create {
+  width: 100%;
+  padding: 1.4vh 0;
+  background-color: var(--blue);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  margin-top: 4vh;
+}
