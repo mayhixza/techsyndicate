@@ -25,7 +25,6 @@ const userSchema = new mongoose.Schema({
   },
   points: {
     type: Number,
-    required: true,
   },
   detour: String,
 });
