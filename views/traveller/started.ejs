@@ -38,11 +38,17 @@
           <a href="#">Record Pick Up</a>
         </button>
         <p>Delivered Package?</p>
-        <button
+
+        <% if (detour.picked) { %>
+          <button
+          class="btn dropBtn" onclick="pkgDrop(this)">
+        <% } else { %>
+          <button
           class="btn dropBtn"
           style="opacity: 0.7; pointer-events: none"
           onclick="pkgDrop(this)"
         >
+        <% } %>
           <a href="#">Record Delivery</a>
         </button>
 
@@ -145,6 +151,9 @@
         } else {
           document.querySelector(".err").textContent =
             "Location not near Dropoff";
+
+          document.querySelector(".dropBtn").style.opacity = 1;
+          document.querySelector(".dropBtn").style.pointerEvents = "all";
         }
       }
 
