@@ -43,7 +43,7 @@
         </button>
 
         <p>Get Details for delivery</p>
-        <button class="btn">Details</button>
+        <button class="btn det">Details</button>
       </div>
     </section>
 
@@ -53,7 +53,39 @@
 
     <div class="details">
       <h1>Details</h1>
-      
+      <div class="unit">
+        <label>Type</label>
+        <h3><%= detour.type %></h3>
+      </div>
+      <div class="unit">
+        <label>Is it Fragile?</label>
+        <h3><%= detour.fragile? "Yes" : "No" %></h3>
+      </div>
+      <div class="unit">
+        <label>Pick Location</label>
+        <h3><%= detour.pickFlat %>, <%= detour.pickAddress %></h3>
+      </div>
+      <div class="unit">
+        <label>Drop Location</label>
+        <h3><%= detour.dropFlat %>, <%= detour.dropAddress %></h3>
+      </div>
+      <div class="unit">
+        <label>Distance</label>
+        <h3><%= detour.distance / 1000 %>&nbsp;KMs.</h3>
+      </div>
+      <div class="unit">
+        <label>Points to be Earned</label>
+        <h3><%= detour.reward %></h3>
+      </div>
+
+      <div class="unit">
+        <label>See on Map</label>
+        <a target="_blank" href="https://eloc.me/<%= detour.dropLocation %>"
+          >Click here to open in Map</a
+        >
+      </div>
+
+      <button id="close">Done</button>
     </div>
 
     <script>
@@ -113,6 +145,14 @@
             "Location not near Dropoff";
         }
       }
+
+      document.querySelector(".det").addEventListener("click", () => {
+        document.querySelector(".details").classList.add("unitActive");
+      });
+
+      document.querySelector("#close").addEventListener("click", () => {
+        document.querySelector(".details").classList.remove("unitActive");
+      });
     </script>
   </body>
 </html>

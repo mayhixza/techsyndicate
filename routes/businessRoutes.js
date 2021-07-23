@@ -64,8 +64,6 @@ router.post("/create", async (req, res) => {
   } else {
     fragile = true;
   }
-  pickLocation = "NUS56A";
-  dropLocation = "NTXV52";
 
   // const distData = await fetch(`https://apis.mapmyindia.com/advancedmaps/v1/9dafa78f7b63a4f0391967a5f43ee66f/distance_matrix/driving/${pickLocation}%3B${dropLocation}?region=IND&sources=0`, {
   //   method: 'GET',
