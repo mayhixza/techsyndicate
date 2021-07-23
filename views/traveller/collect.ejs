@@ -15,13 +15,29 @@
     <nav>
       <div class="navbar">
         <img src="../assets/Logo.svg" class="logo" />
+        <div class="ham">
+          <div class="line"></div>
+        </div>
       </div>
     </nav>
+
+    <div class="sideNav">
+      <a href="/traveller">Home</a>
+      <a href="/traveller/rewards">Rewards</a>
+      <a href="/auth/logout">Logout</a>
+    </div>
 
     <div class="container">
       <h1>+ d. <%= reward %></h1>
       <h2>Have been Added to your account</h2>
       <a href="/traveller/rewards">Avail Rewards</a>
     </div>
+
+    <script>
+      document.querySelector(".ham").addEventListener("click", () => {
+        document.querySelector(".ham").classList.toggle("hamActive");
+        document.querySelector(".sideNav").classList.toggle("sideNavActive");
+      });
+    </script>
   </body>
 </html>

@@ -20,8 +20,16 @@
     <nav>
       <div class="navbar">
         <img src="../assets/Logo.svg" class="logo" />
+        <div class="ham">
+          <div class="line"></div>
+        </div>
       </div>
     </nav>
+
+    <div class="sideNav">
+      <a href="/business/create">Create Detour</a>
+      <a href="/auth/logout">Logout</a>
+    </div>
 
     <section class="container">
       <a class="create" href="/business/create">Create a Detour</a>
@@ -110,5 +118,12 @@
         <button class="btn all-btn"><a href="#">See All</a></button>
       </div>
     </section>
+
+    <script>
+      document.querySelector(".ham").addEventListener("click", () => {
+        document.querySelector(".ham").classList.toggle("hamActive");
+        document.querySelector(".sideNav").classList.toggle("sideNavActive");
+      });
+    </script>
   </body>
 </html>

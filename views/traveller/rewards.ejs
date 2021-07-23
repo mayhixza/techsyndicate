@@ -20,8 +20,16 @@
     <nav>
       <div class="navbar">
         <img src="../assets/Logo.svg" class="logo" />
+        <div class="ham">
+          <div class="line"></div>
+        </div>
       </div>
     </nav>
+
+    <div class="sideNav">
+      <a href="/traveller">Detours</a>
+      <a href="/auth/logout">Logout</a>
+    </div>
 
     <section class="rewards">
       <h1>Rewards</h1>
@@ -35,5 +43,12 @@
         </div>
       </div>
     </section>
+
+    <script>
+      document.querySelector(".ham").addEventListener("click", () => {
+        document.querySelector(".ham").classList.toggle("hamActive");
+        document.querySelector(".sideNav").classList.toggle("sideNavActive");
+      });
+    </script>
   </body>
 </html>

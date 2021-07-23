@@ -55,9 +55,7 @@
     </nav>
 
     <div class="sideNav">
-      <a href="/">Home</a>
-      <a href="/auth/login">Login</a>
-      <a href="/auth/signup">Register</a>
+      <a href="/business">Home</a>
       <a href="/auth/logout">Logout</a>
     </div>
 
@@ -72,7 +70,6 @@
 
         <div class="input-wrap">
           <form class="input-icons" action="/business/create" method="POST">
-            <h6 class="err">Address too Small</h6>
             <h1>Set up Detour</h1>
             <div class="input">
               <i class="fa fa-truck icon"></i>
@@ -97,6 +94,7 @@
                 type="text"
                 name="pickLocation"
                 id="pickLoc"
+                required
                 class="input-field"
                 placeholder="Pick Location"
                 onkeyup="result(this.value, 'livesearchpick', true)"
@@ -107,6 +105,7 @@
             <input
               type="text"
               class="input-field"
+              required
               placeholder="Pickup Apartment"
               name="pickFlat"
             />
@@ -116,6 +115,7 @@
               <input
                 type="text"
                 name="dropLocation"
+                required
                 placeholder="Drop Location"
                 id="dropLoc"
                 class="input-field"
@@ -126,14 +126,16 @@
             <i class="fa fa-building icon"></i>
             <input
               type="text"
+              required
               class="input-field"
               placeholder="Drop Apartment"
               name="dropFlat"
             />
             <div id="livesearchdrop" class="hide"></div>
             <button type="submit" class="create">Create</button>
-            <input type="text" name="pickeLoc" style="display: none" />
-            <input type="text" name="dropeLoc" style="display: none" />
+            <input type="text" required name="pickeLoc" style="display: none" />
+            <input type="text" required name="dropeLoc" style="display: none" />
+            <h6 class="err">Address too Small</h6>
           </form>
         </div>
       </div>
