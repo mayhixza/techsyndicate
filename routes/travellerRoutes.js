@@ -142,7 +142,7 @@ router.get("/pick", async (req, res) => {
   // );
   // let a2 = await distData2.json();
   // let distInt2 = a2.results.distances[0][1];
-  let distInt2 = 400;
+  let distInt2 = 125;
   if (distInt2 < 400) {
     await Detour.updateOne(
       { _id: mongoose.Types.ObjectId(req.query.ID) },
@@ -161,7 +161,10 @@ router.get("/pick", async (req, res) => {
 
 router.get("/drop", async (req, res) => {
   let pickLocELoc;
-  const detour = await Detour.findById(mongoose.Types.ObjectId(req.query.ID));
+  const detour = await Detour.findOne({
+    _id: mongoose.Types.ObjectId(req.query.ID),
+    picked: true,
+  });
   pickLocELoc = detour.dropLocation;
   // const addressFetch = await fetch(
   //   `https://apis.mapmyindia.com/advancedmaps/v1/9dafa78f7b63a4f0391967a5f43ee66f/rev_geocode?lat=${req.query.lat}&lng=${req.query.long}&region=IND`, {
@@ -199,7 +202,7 @@ router.get("/drop", async (req, res) => {
   let distInt2 = 125;
   if (distInt2 < 400) {
     await Detour.updateOne(
-      { _id: mongoose.Types.ObjectId(req.query.ID) },
+      { _id: mongoose.Types.ObjectId(req.query.ID), picked: true },
       {
         $set: {
           dropped: true,

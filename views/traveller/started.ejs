@@ -38,7 +38,11 @@
           <a href="#">Record Pick Up</a>
         </button>
         <p>Delivered Package?</p>
-        <button class="btn dropBtn" onclick="pkgDrop(this)">
+        <button
+          class="btn dropBtn"
+          style="opacity: 0.7; pointer-events: none"
+          onclick="pkgDrop(this)"
+        >
           <a href="#">Record Delivery</a>
         </button>
 
@@ -95,7 +99,7 @@
         detourID = detourID.slice(0, -1);
       }
       function pkgPick(a) {
-        const btns = document.querySelectorAll(".btn");
+        const btns = document.querySelectorAll(".pickBtn, .dropBtn");
         for (let btn of btns) {
           btn.style.opacity = "0.7";
           btn.style.pointerEvents = "none";
@@ -114,6 +118,8 @@
           btn.style.pointerEvents = "all";
         }
         if (om.done) {
+          document.querySelector(".fromBtn").style.opacity = "1";
+          document.querySelector(".fromBtn").style.pointerEvents = "all";
           document.querySelector(".success").textContent = "Item Picked up";
         } else {
           document.querySelector(".err").textContent =
@@ -121,7 +127,7 @@
         }
       }
       function pkgDrop(a) {
-        const btns = document.querySelectorAll(".btn");
+        const btns = document.querySelectorAll(".pickBtn, .dropBtn");
         for (let btn of btns) {
           btn.style.opacity = "0.7";
           btn.style.pointerEvents = "none";
