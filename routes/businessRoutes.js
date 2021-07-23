@@ -43,7 +43,7 @@ router.post("/create", async (req, res) => {
   //     method: "GET",
   //     headers: {
   //       "Content-Type": "application/json",
-  //       Authorization: "Bearer b4230734-0bcb-4b2d-bda5-a12b2f4b9066",
+  //       Authorization: "Bearer f336ba0d-0c3e-4f0a-bf75-93365f4f6345",
   //     },
   //   }
   // );
@@ -56,7 +56,7 @@ router.post("/create", async (req, res) => {
   //     method: "GET",
   //     headers: {
   //       "Content-Type": "application/json",
-  //       Authorization: "Bearer b4230734-0bcb-4b2d-bda5-a12b2f4b9066",
+  //       Authorization: "Bearer f336ba0d-0c3e-4f0a-bf75-93365f4f6345",
   //     },
   //   }
   // );
@@ -71,9 +71,9 @@ router.post("/create", async (req, res) => {
   pickLocation = "NUS56A";
   dropLocation = "NTXV52";
 
-  // const distData = await fetch(`https://apis.mapmyindia.com/advancedmaps/v1/1552cd216febc8bf1934938997aaf215/distance_matrix/driving/${pickLocation}%3B${dropLocation}?region=IND&sources=0`, {
+  // const distData = await fetch(`https://apis.mapmyindia.com/advancedmaps/v1/9dafa78f7b63a4f0391967a5f43ee66f/distance_matrix/driving/${pickLocation}%3B${dropLocation}?region=IND&sources=0`, {
   //   method: 'GET',
-  //   headers: { 'Content-Type': 'application/json' , 'Authorization': 'Bearer b4230734-0bcb-4b2d-bda5-a12b2f4b9066'},
+  //   headers: { 'Content-Type': 'application/json' , 'Authorization': 'Bearer f336ba0d-0c3e-4f0a-bf75-93365f4f6345'},
   // });
   // let a = await distData.json();
   // let distInt = a.results.distances[0][1];
@@ -112,7 +112,7 @@ router.post("/search", async (req, res) => {
   //       method: "GET",
   //       headers: {
   //         "Content-Type": "application/json",
-  //         Authorization: "Bearer b4230734-0bcb-4b2d-bda5-a12b2f4b9066",
+  //         Authorization: "Bearer f336ba0d-0c3e-4f0a-bf75-93365f4f6345",
   //       },
   //     }
   //   );
