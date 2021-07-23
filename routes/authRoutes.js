@@ -40,6 +40,7 @@ router.post("/signup", notRequireAuth, async (req, res) => {
       business,
       password,
       inDetour: false,
+      points: 0,
     });
     const token = createToken(user._id);
     res
