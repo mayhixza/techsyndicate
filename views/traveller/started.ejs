@@ -113,17 +113,13 @@
           `/traveller/pick?lat=${b.coords.latitude}&long=${b.coords.longitude}&ID=${detourID}`
         );
         let om = await data.json();
-        for (let btn of btns) {
-          btn.style.opacity = "1";
-          btn.style.pointerEvents = "all";
-        }
         if (om.done) {
-          document.querySelector(".fromBtn").style.opacity = "1";
-          document.querySelector(".fromBtn").style.pointerEvents = "all";
           document.querySelector(".success").textContent = "Item Picked up";
         } else {
           document.querySelector(".err").textContent =
             "Location not near Pickup";
+          document.querySelector(".pickBtn").style.opacity = 1;
+          document.querySelector(".pickBtn").style.pointerEvents = "all";
         }
       }
       function pkgDrop(a) {
