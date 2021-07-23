@@ -36,11 +36,16 @@
       </div>
     </section>
     <script>
+      let detourID = window.location.href;
+      detourID = detourID.split("/traveller/inTour/")[1];
+      if(detourID.charAt(-1)==="#") {
+        detourID = detourID.slice(0, -1);
+      }
       function pkgPick(a) {
         navigator.geolocation.getCurrentPosition(cb);
       }
       async function cb(b) {
-        data = await window.fetch(`/traveller/pick?lat=${b.coords.latitude}&long=${b.coords.longitude}`);
+        data = await window.fetch(`/traveller/pick?lat=${b.coords.latitude}&long=${b.coords.longitude}&ID=${detourID}`);
         let om = await data.json();
         console.log(om);
         console.log(b);
