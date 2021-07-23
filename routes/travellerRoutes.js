@@ -75,6 +75,7 @@ router.get("/detours", checkInTour, async (req, res) => {
 
 router.get("/inTour/:id", async (req, res) => {
   const user = jwt.decode(req.cookies.jwt).id;
+  const detour = await Detour.findById(req.params.id);
 
   await Detour.updateOne(
     { _id: req.params.id, active: true, taken: false },
@@ -96,7 +97,7 @@ router.get("/inTour/:id", async (req, res) => {
     }
   );
 
-  res.render("traveller/started", { id: req.params.id });
+  res.render("traveller/started", { id: req.params.id, detour: detour });
 });
 
 router.get("/rewards", checkInTour, (req, res) => {
