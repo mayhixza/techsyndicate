@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/all.css" />
     <link rel="stylesheet" href="/css/welcome.css" />
+    <link rel="stylesheet" href="/css/create.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,500&display=swap"
@@ -41,7 +42,7 @@
       }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>dTour - Welcome</title>
+    <title>dTour - Create</title>
   </head>
   <body>
     <nav>
@@ -68,45 +69,76 @@
     <section class="container">
       <div class="wrap">
         <img src="/assets/phool.svg" class="image" />
-        <h1>Welcome, traveller</h1>
+
         <div class="input-wrap">
-          <form class="input-icons" action="/traveller" method="POST">
+          <form class="input-icons" action="/business/create" method="POST">
             <h6 class="err">Address too Small</h6>
+            <h1>Set up Detour</h1>
+            <div class="input">
+              <i class="fa fa-truck icon"></i>
+              <select required class="input-field" name="type">
+                <option value="">Delivery Type</option>
+                <option value="food">Food</option>
+                <option value="package">Package</option>
+                <option value="mail">Mail</option>
+              </select>
+            </div>
+            <i class="fa fa-car icon"></i>
+            <select required class="input-field" name="fragile">
+              <option value="">Is the package fragile?</option>
+              <option value="on">Yes</option>
+              <option value="off">No</option>
+            </select>
+            <br />
+
             <div class="input">
               <i class="fa fa-map-pin icon"></i>
               <input
-                class="input-field"
                 type="text"
-                placeholder="Enter start location"
-                id="pickLoc"
                 name="pickLocation"
+                id="pickLoc"
+                class="input-field"
+                placeholder="Pick Location"
                 onkeyup="result(this.value, 'livesearchpick', true)"
-              /><br />
+              />
               <div class="dropdown dropdownPick gayab"></div>
             </div>
-
+            <i class="fa fa-home icon"></i>
+            <input
+              type="text"
+              class="input-field"
+              placeholder="Pickup Apartment"
+              name="pickFlat"
+            />
+            <br />
             <div class="input">
               <i class="fa fa-map-marker icon"></i>
               <input
-                class="input-field"
                 type="text"
-                id="dropLoc"
                 name="dropLocation"
-                placeholder="Enter end location"
+                placeholder="Drop Location"
+                id="dropLoc"
+                class="input-field"
                 onkeyup="result(this.value, 'livesearchdrop', false)"
               />
               <div class="dropdown dropdownDrop gayab"></div>
             </div>
-
+            <i class="fa fa-building icon"></i>
+            <input
+              type="text"
+              class="input-field"
+              placeholder="Drop Apartment"
+              name="dropFlat"
+            />
+            <div id="livesearchdrop" class="hide"></div>
+            <button type="submit" class="create">login</button>
             <input type="text" name="pickeLoc" style="display: none" />
             <input type="text" name="dropeLoc" style="display: none" />
-
-            <button class="btn" type="submit">Find Detours</button>
           </form>
         </div>
       </div>
     </section>
-    
+
     <script>
       let res;
       let timeout;
@@ -147,7 +179,7 @@
         }
         // res.classList.remove("hide");
         $.ajax({
-          url: `/traveller/search?srch=${str}`,
+          url: `/business/search?srch=${str}`,
           method: "POST",
           contentType: "application/json",
           data: JSON.stringify({ search: str }),

@@ -12,11 +12,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/create", (req, res) => {
-  res.render("bizCreate");
-});
-
-router.get("/setup-detour", (req, res) => {
-  res.render("business/setup-detour");
+  res.render("business/bizCreate");
 });
 
 router.get("/listed", (req, res) => {

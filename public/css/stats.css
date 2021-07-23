@@ -1,9 +1,9 @@
 :root {
-  --blue: #239ED5;
+  --blue: #239ed5;
 }
 
 body {
-  background-color: #F5F3F4;
+  background-color: #f5f3f4;
 }
 
 .container {
@@ -20,11 +20,15 @@ body {
 }
 
 p {
-  font-size: 6vw;
+  font-size: 5vw;
 }
 
-table, td, th {
+table,
+td,
+th {
   border: 1px solid black;
+  font-size: 3.4vw;
+  padding: 1vh 4vw;
 }
 
 table {
@@ -39,12 +43,12 @@ tr {
 }
 
 .card .btn {
-  background-color: #239ED5;
+  background-color: #239ed5;
   border: 0;
   width: 100%;
   padding: 1vh 2vh;
-  border-radius: 4px; 
-  margin-bottom: 1vh; 
+  border-radius: 4px;
+  margin-bottom: 1vh;
 }
 
 .btn a {
@@ -52,4 +56,18 @@ tr {
   text-decoration: none;
   font-weight: 400;
   font-size: 3.7vw;
+}
+
+.create {
+  font-size: 2vh;
+  display: inline-block;
+  text-decoration: none;
+  color: var(--white);
+  background-color: var(--green);
+  margin: 0 5vw;
+  width: calc(100% - 10vw);
+  /* margin-bottom: 2vh; */
+  border-radius: 10px;
+  padding: 1.6vh 0;
+  text-align: center;
 }

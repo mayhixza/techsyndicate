@@ -33,7 +33,7 @@ app.use(cookieParser());
 app.use("/auth", authRoutes);
 app.use("/business", routeToBusiness, businessRoutes);
 app.use("/traveller", routeToTraveller, travellerRoutes);
-app.get("/", (req, res) => res.render("landing"));
+app.get("/", landingRedirect, (req, res) => res.render("landing"));
 app.get("*", (req, res) => res.send("<h1>404</h1>"));
 
 // Middleware
@@ -68,6 +68,27 @@ function routeToTraveller(req, res, next) {
         const user = await User.findById(decodedToken.id);
         if (!user.business) {
           next();
+        } else {
+          res.redirect("/business");
+        }
+      }
+    });
+  } else {
+    res.redirect("/auth/login");
+  }
+}
+
+function landingRedirect(req, res, next) {
+  const token = req.cookies.jwt;
+
+  if (token) {
+    jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
+      if (err) {
+        res.redirect("/auth/login");
+      } else {
+        const user = await User.findById(decodedToken.id);
+        if (!user.business) {
+          res.redirect("/traveller");
         } else {
           res.redirect("/business");
         }

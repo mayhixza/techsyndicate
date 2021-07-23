@@ -24,11 +24,12 @@ body {
   z-index: 5;
   box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1), 0 6px 40px 0 rgba(0, 0, 0, 0.1);
   position: relative;
+  overflow: hidden;
 }
 
 .image {
   position: absolute;
-  top: -4px;
+  top: -8px;
   left: 6px;
   width: 75vw;
 }
@@ -94,6 +95,8 @@ h1 {
   left: 0;
   top: 101%;
   z-index: 9;
+  max-height: 12vh;
+  overflow: scroll;
   border-radius: 10px;
   width: 100%;
   background-color: #fff;
