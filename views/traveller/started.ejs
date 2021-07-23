@@ -14,6 +14,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>dTour- Started</title>
   </head>
   <body>
@@ -28,36 +29,81 @@
       <img src="/assets/check.svg" class="check" />
       <h2>dTour Started</h2>
 
+      <h6 class="err"></h6>
+      <h6 class="success"></h6>
+
       <div class="options">
         <p>Picked up package?</p>
-        <button class="btn" onclick="pkgPick(this)"><a href="#">Record Pick Up</a></button>
+        <button class="btn pickBtn" onclick="pkgPick(this)">
+          <a href="#">Record Pick Up</a>
+        </button>
         <p>Delivered Package?</p>
-        <button class="btn" onclick="pkgDrop(this)"><a href="#">Record Delivery</a></button>
+        <button class="btn dropBtn" onclick="pkgDrop(this)">
+          <a href="#">Record Delivery</a>
+        </button>
       </div>
     </section>
+
+    <a style="display: none" id="nonee" href="/traveller/collect?id=<%= id %>"
+      >Collect</a
+    >
+
     <script>
       let detourID = window.location.href;
       detourID = detourID.split("/traveller/inTour/")[1];
-      if(detourID.charAt(-1)==="#") {
+      if (detourID.charAt(-1) === "#") {
         detourID = detourID.slice(0, -1);
       }
       function pkgPick(a) {
+        const btns = document.querySelectorAll(".btn");
+        for (let btn of btns) {
+          btn.style.opacity = "0.7";
+          btn.style.pointerEvents = "none";
+        }
+
         navigator.geolocation.getCurrentPosition(cb);
       }
       async function cb(b) {
-        data = await window.fetch(`/traveller/pick?lat=${b.coords.latitude}&long=${b.coords.longitude}&ID=${detourID}`);
+        const btns = document.querySelectorAll(".btn");
+        data = await window.fetch(
+          `/traveller/pick?lat=${b.coords.latitude}&long=${b.coords.longitude}&ID=${detourID}`
+        );
         let om = await data.json();
-        console.log(om);
-        console.log(b);
+        for (let btn of btns) {
+          btn.style.opacity = "1";
+          btn.style.pointerEvents = "all";
+        }
+        if (om.done) {
+          document.querySelector(".success").textContent = "Item Picked up";
+        } else {
+          document.querySelector(".err").textContent =
+            "Location not near Pickup";
+        }
       }
       function pkgDrop(a) {
+        const btns = document.querySelectorAll(".btn");
+        for (let btn of btns) {
+          btn.style.opacity = "0.7";
+          btn.style.pointerEvents = "none";
+        }
+
         navigator.geolocation.getCurrentPosition(cbd);
       }
       async function cbd(b) {
-        data = await window.fetch(`/traveller/drop?lat=${b.coords.latitude}&long=${b.coords.longitude}&ID=${detourID}`);
+        data = await window.fetch(
+          `/traveller/drop?lat=${b.coords.latitude}&long=${b.coords.longitude}&ID=${detourID}`
+        );
         let om = await data.json();
-        console.log(om);
-        console.log(b);
+        if (om.done) {
+          document.querySelector(".success").textContent = "Item Delivered";
+
+          setTimeout(() => {
+            $("#nonee")[0].click();
+          }, 1000);
+        } else {
+          document.querySelector(".err").textContent =
+            "Location not near Dropoff";
+        }
       }
     </script>
   </body>

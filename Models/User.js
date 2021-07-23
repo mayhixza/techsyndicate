@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
-  rewards: {
+  points: {
     type: Number,
     required: true,
   },

@@ -45,6 +45,8 @@ const detourSchema = new mongoose.Schema({
     required: true,
   },
   assignedTo: String,
+  picked: Boolean,
+  dropped: Boolean,
 });
 
 const Detour = mongoose.model("detour", detourSchema);

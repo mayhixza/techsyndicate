@@ -1,0 +1,32 @@
+body {
+  height: 100vh;
+  overflow: hidden;
+}
+* {
+  text-align: center;
+}
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+h1 {
+  color: var(--green);
+  font-size: 4vh;
+}
+h2 {
+  font-size: 2vh;
+  margin: 2vh 0;
+}
+
+a {
+  width: 50%;
+  padding: 2vh 0;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #fff;
+  background: var(--blue);
+}

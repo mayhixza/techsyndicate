@@ -1,53 +1,62 @@
 :root {
-    --greenn: #33B163;
-    --blue: #239ED5;
-    --text: #161A1D;
+  --greenn: #33b163;
+  --blue: #239ed5;
+  --text: #161a1d;
 }
 
 body {
-    color: var(--text)
+  color: var(--text);
 }
 
 .container {
-    height: 92vh;
-    text-align: center;
+  height: 92vh;
+  text-align: center;
 }
 
 .check {
-    height: 20vh;
-    margin-top: 12vh;
+  height: 20vh;
+  margin-top: 12vh;
 }
 
 h2 {
-    color: var(--greenn);
-    margin-top: 2.5vh;
+  color: var(--greenn);
+  margin-top: 2.5vh;
 }
 
 .options {
-    text-align: left;
-    width: 78%;
-    margin : 0 auto;
-    margin-top: 10vh;
+  text-align: left;
+  width: 78%;
+  margin: 0 auto;
+  margin-top: 10vh;
 }
 
 .options p {
-    font-size: 5vw;
-    margin-bottom: 1.7vh;
+  font-size: 5vw;
+  margin-bottom: 1.7vh;
 }
 
 .btn {
-    background-color: var(--blue);
-    border: 0;
-    padding: 1.5vh 2vh;
-    border-radius: 3px; 
-    margin-bottom: 5vh; 
-    width: 100%;
+  background-color: var(--blue);
+  border: 0;
+  padding: 1.5vh 2vh;
+  border-radius: 3px;
+  margin-bottom: 5vh;
+  width: 100%;
 }
 
 .btn a {
-    color: var(--white);
-    text-decoration: none;
-    font-weight: 400;
-    font-size: 4.1vw;
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 4.1vw;
 }
-
+.err,
+.success {
+  font-size: 1.6vh;
+}
+.err {
+  color: var(--red);
+}
+.success {
+  color: var(--green);
+}
