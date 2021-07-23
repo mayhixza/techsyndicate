@@ -18,14 +18,6 @@
       </div>
     </nav>
 
-    <div class="bottomNav">
-      <a href="/"><i class="fas fa-house"></i></a>
-      <a href="/"><i class="fas fa-house"></i></a>
-      <a href="/"><i class="fas fa-house"></i></a>
-      <a href="/"><i class="fas fa-house"></i></a>
-      <a href="/"><i class="fas fa-house"></i></a>
-    </div>
-
     <section class="detours-container">
       <input type="text" name="detours" placeholder="Find detours near you" />
       <div class="cards">
@@ -33,7 +25,9 @@
         <div class="card">
           <i class="fa fa-car"></i>
           <h3 class="delivery"><%= detour.type %></h3>
-          <p class="distance"><%= detour.distance / 1000 %>&nbsp;KMs.</p>
+          <p class="distance">
+            <%= (detour.distance / 1000).toFixed(2) %>&nbsp;KMs.
+          </p>
           <button class="btn detour-btn">
             <a href="/traveller/inTour/<%= detour._id %>">Detour</a>
           </button>

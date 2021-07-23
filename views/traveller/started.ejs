@@ -125,6 +125,7 @@
         let om = await data.json();
         if (om.done) {
           document.querySelector(".success").textContent = "Item Picked up";
+          location.reload();
         } else {
           document.querySelector(".err").textContent =
             "Location not near Pickup";
