@@ -47,8 +47,18 @@
     <nav>
       <div class="navbar">
         <img src="/assets/Logo.svg" class="logo" />
+        <div class="ham">
+          <div class="line"></div>
+        </div>
       </div>
     </nav>
+
+    <div class="sideNav">
+      <a href="/">Home</a>
+      <a href="/auth/login">Login</a>
+      <a href="/auth/signup">Register</a>
+      <a href="/auth/logout">Logout</a>
+    </div>
 
     <div class="wrapper">
       <div class="background"></div>
@@ -153,6 +163,11 @@
           },
         });
       }
+
+      document.querySelector(".ham").addEventListener("click", () => {
+        document.querySelector(".ham").classList.toggle("hamActive");
+        document.querySelector(".sideNav").classList.toggle("sideNavActive");
+      });
     </script>
   </body>
 </html>

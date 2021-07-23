@@ -28,13 +28,16 @@
 
 nav {
   background-color: var(--black);
+  z-index: 1000;
 }
 
 .navbar {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 2vh;
   margin: auto 5vw;
+  z-index: 100;
 }
 
 .logo {
@@ -60,4 +63,76 @@ li a {
   left: 0;
   width: 100vw;
   height: 7vh;
+}
+
+.ham {
+  cursor: pointer;
+  height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1vh 3vw;
+  padding-right: 0;
+  z-index: 100;
+}
+.line {
+  width: 6vw;
+  border-radius: 10px;
+  height: 2px;
+  background: #fff;
+  position: relative;
+  transition: all 0.3s;
+}
+.line::before,
+.line::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  border-radius: 10px;
+  transition: all 0.3s;
+}
+.line::before {
+  top: -6px;
+}
+.line::after {
+  top: 6px;
+}
+
+.hamActive .line {
+  background: transparent;
+}
+.hamActive .line::before {
+  transform: translateY(6px) rotate(45deg);
+}
+.hamActive .line::after {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Side */
+.sideNav {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 70vw;
+  height: 100vh;
+  background: var(--black);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 8;
+  transition: all 0.3s;
+}
+.sideNav a {
+  margin: 3vh 0;
+  color: #fff;
+  text-decoration: none;
+}
+
+.sideNavActive {
+  right: 0;
+  box-shadow: 0 0 100px var(--black);
 }
