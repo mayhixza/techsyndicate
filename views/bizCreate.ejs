@@ -58,6 +58,8 @@
         onkeyup="result(this.value, 'livesearchpick', true)"
       />
       <div class="dropdownPick"></div>
+      <label for="pickFlat">Pick Apartment</label>
+      <input type="text" name="pickFlat" />
       <br />
       <label for="dropLocation">Drop Location</label>
       <input
@@ -67,9 +69,13 @@
         onkeyup="result(this.value, 'livesearchdrop', false)"
       />
       <div class="dropdownDrop"></div>
+      <label for="dropFlat">Drop Apartment</label>
+      <input type="text" name="dropFlat" />
       <div class="err"></div>
       <div id="livesearchdrop" class="hide"></div>
       <button>login</button>
+      <input type="text" name="pickeLoc" style="display: none" />
+      <input type="text" name="dropeLoc" style="display: none" />
     </form>
 
     <script>
@@ -108,6 +114,7 @@
             result.forEach((element) => {
               const div = document.createElement("DIV");
               div.textContent = element.placeName + ", " + element.placeAddress;
+              div.id = element.eLoc;
               if (pick) {
                 document.querySelector(".dropdownPick").append(div);
               } else {
@@ -117,12 +124,16 @@
               for (let div of document.querySelectorAll(".dropdownPick div")) {
                 div.addEventListener("click", () => {
                   document.querySelector("#pickLoc").value = div.textContent;
+                  document.querySelector("input[name='pickeLoc']").value =
+                    div.id;
                 });
               }
 
               for (let div of document.querySelectorAll(".dropdownDrop div")) {
                 div.addEventListener("click", () => {
                   document.querySelector("#dropLoc").value = div.textContent;
+                  document.querySelector("input[name='dropeLoc']").value =
+                    div.id;
                 });
               }
             });

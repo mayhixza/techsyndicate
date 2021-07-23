@@ -27,6 +27,7 @@ const userSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  detour: String,
 });
 
 userSchema.pre("save", async function (next) {

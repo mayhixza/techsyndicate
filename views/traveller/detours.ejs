@@ -36,78 +36,22 @@
     <section class="detours-container">
       <input type="text" name="detours" placeholder="Find detours near you" />
       <div class="cards">
+        <% for (let detour of detours) { %>
         <div class="card">
           <i class="fa fa-car"></i>
-          <h3 class="delivery">Package Delivery</h3>
-          <p class="distance">12-14kms</p>
-          <button class="btn detour-btn"><a href="#">Detour</a></button>
+          <h3 class="delivery"><%= detour.type %></h3>
+          <p class="distance"><%= detour.distance / 1000 %>&nbsp;KMs.</p>
+          <button class="btn detour-btn">
+            <a href="/traveller/inTour/<%= detour._id %>">Detour</a>
+          </button>
           <div class="user">
             <div class="user-text">
-              <p class="user">Kevin Baba</p>
+              <p class="user"><%= detour.bizID %></p>
             </div>
             <i class="fa fa-user"></i>
           </div>
         </div>
-        <div class="card">
-          <i class="fa fa-car"></i>
-          <h3 class="delivery">Package Delivery</h3>
-          <p class="distance">12-14kms</p>
-          <button class="btn detour-btn"><a href="#">Detour</a></button>
-          <div class="user">
-            <div class="user-text">
-              <p class="user">Kevin Baba</p>
-            </div>
-            <i class="fa fa-user"></i>
-          </div>
-        </div>
-        <div class="card">
-          <i class="fa fa-car"></i>
-          <h3 class="delivery">Package Delivery</h3>
-          <p class="distance">12-14kms</p>
-          <button class="btn detour-btn"><a href="#">Detour</a></button>
-          <div class="user">
-            <div class="user-text">
-              <p class="user">Kevin Baba</p>
-            </div>
-            <i class="fa fa-user"></i>
-          </div>
-        </div>
-        <div class="card">
-          <i class="fa fa-car"></i>
-          <h3 class="delivery">Package Delivery</h3>
-          <p class="distance">12-14kms</p>
-          <button class="btn detour-btn"><a href="#">Detour</a></button>
-          <div class="user">
-            <div class="user-text">
-              <p class="user">Kevin Baba</p>
-            </div>
-            <i class="fa fa-user"></i>
-          </div>
-        </div>
-        <div class="card">
-          <i class="fa fa-car"></i>
-          <h3 class="delivery">Package Delivery</h3>
-          <p class="distance">12-14kms</p>
-          <button class="btn detour-btn"><a href="#">Detour</a></button>
-          <div class="user">
-            <div class="user-text">
-              <p class="user">Kevin Baba</p>
-            </div>
-            <i class="fa fa-user"></i>
-          </div>
-        </div>
-        <div class="card">
-          <i class="fa fa-car"></i>
-          <h3 class="delivery">Package Delivery</h3>
-          <p class="distance">12-14kms</p>
-          <button class="btn detour-btn"><a href="#">Detour</a></button>
-          <div class="user">
-            <div class="user-text">
-              <p class="user">Kevin Baba</p>
-            </div>
-            <i class="fa fa-user"></i>
-          </div>
-        </div>
+        <% } %>
       </div>
     </section>
   </body>

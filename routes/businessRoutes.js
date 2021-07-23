@@ -26,7 +26,16 @@ router.get("/", (req, res) => {
 //POST Routes
 router.post("/create", async (req, res) => {
   const id = jwt.decode(req.cookies.jwt).id;
-  let { type, fragile, pickLocation, dropLocation } = req.body;
+  let {
+    type,
+    fragile,
+    pickLocation,
+    dropLocation,
+    pickFlat,
+    dropFlat,
+    pickeLoc,
+    dropeLoc,
+  } = req.body;
 
   // const data = await fetch(
   //   `https://atlas.mapmyindia.com/api/places/geocode?address=${pickLocation}`,
@@ -61,8 +70,7 @@ router.post("/create", async (req, res) => {
   }
   pickLocation = "NUS56A";
   dropLocation = "NTXV52";
-  const distance = 0;
-  
+
   // const distData = await fetch(`https://apis.mapmyindia.com/advancedmaps/v1/1552cd216febc8bf1934938997aaf215/distance_matrix/driving/${pickLocation}%3B${dropLocation}?region=IND&sources=0`, {
   //   method: 'GET',
   //   headers: { 'Content-Type': 'application/json' , 'Authorization': 'Bearer b4230734-0bcb-4b2d-bda5-a12b2f4b9066'},
@@ -70,22 +78,28 @@ router.post("/create", async (req, res) => {
   // let a = await distData.json();
   // let distInt = a.results.distances[0][1];
   let distInt = 125; //In Meters
-  // const disJson = await distData.json();
 
-  // try {
-  //   const detour = await Detour.create({
-  //     type,
-  //     fragile,
-  //     pickLocation,
-  //     dropLocation,
-  //     bizID: id,
-  //     distance: distance,
-  //   });
-  //   return res.redirect("/business");
-  // } catch (err) {
-  //   console.log(err);
-  //   return res.render("bizCreate", { error });
-  // }
+  let reward = Math.floor(distInt / 1000);
+
+  try {
+    const detour = await Detour.create({
+      type,
+      fragile,
+      pickLocation: pickeLoc,
+      dropLocation: dropeLoc,
+      pickFlat: pickFlat,
+      dropFlat: dropFlat,
+      bizID: id,
+      distance: distInt,
+      reward: reward,
+      active: true,
+      taken: false,
+    });
+    return res.redirect("/business");
+  } catch (err) {
+    console.log(err);
+    return res.render("bizCreate", { error });
+  }
 });
 
 router.post("/search", async (req, res) => {

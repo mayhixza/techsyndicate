@@ -22,6 +22,12 @@ const detourSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  pickFlat: {
+    type: String,
+  },
+  dropFlat: {
+    type: String,
+  },
   distance: {
     type: Number,
     required: true,
@@ -30,6 +36,15 @@ const detourSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  active: {
+    type: Boolean,
+    required: true,
+  },
+  taken: {
+    type: Boolean,
+    required: true,
+  },
+  assignedTo: String,
 });
 
 const Detour = mongoose.model("detour", detourSchema);
