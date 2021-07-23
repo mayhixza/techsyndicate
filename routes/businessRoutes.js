@@ -1,8 +1,8 @@
 const fetch = require("node-fetch");
 const { Router, query } = require("express");
 const jwt = require("jsonwebtoken");
-const Detour = require("../models/Detour");
-const User = require("../models/User");
+const Detour = require("../Models/Detour");
+const User = require("../Models/User");
 
 const router = Router();
 
@@ -90,6 +90,8 @@ router.post("/create", async (req, res) => {
       reward: reward,
       active: true,
       taken: false,
+      pickAddress: pickLocation,
+      dropAddress: dropLocation,
     });
     return res.redirect("/business");
   } catch (err) {

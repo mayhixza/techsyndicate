@@ -1,8 +1,8 @@
 const fetch = require("node-fetch");
 const { Router } = require("express");
 const jwt = require("jsonwebtoken");
-const Detour = require("../models/Detour");
-const User = require("../models/User");
+const Detour = require("../Models/Detour");
+const User = require("../Models/User");
 const router = Router();
 const mongoose = require("mongoose");
 

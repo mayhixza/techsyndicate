@@ -9,7 +9,7 @@ const mongoose = require("mongoose");
 const authRoutes = require("./routes/authRoutes");
 const businessRoutes = require("./routes/businessRoutes");
 const travellerRoutes = require("./routes/travellerRoutes");
-const User = require("./models/User");
+const User = require("./Models/User");
 const jwt = require("jsonwebtoken");
 
 // DB CONNECTION

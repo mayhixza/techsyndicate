@@ -44,6 +44,8 @@ const detourSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
+  pickAddress: String,
+  dropAddress: String,
   assignedTo: String,
   picked: Boolean,
   dropped: Boolean,

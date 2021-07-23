@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const router = Router();
-const User = require("../models/User");
+const User = require("../Models/User");
 const jwt = require("jsonwebtoken");
 router.get("*", checkUser);
 
