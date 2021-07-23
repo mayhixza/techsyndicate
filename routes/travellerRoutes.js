@@ -148,7 +148,7 @@ router.get("/pick", async (req, res) => {
 
   // let distInt2 = 125;
 
-  if (distInt2 < 400) {
+  if (distInt2 < 900) {
     await Detour.updateOne(
       { _id: mongoose.Types.ObjectId(req.query.ID) },
       {
@@ -211,7 +211,7 @@ router.get("/drop", async (req, res) => {
 
     // let distInt2 = 125;
 
-    if (distInt2 < 400) {
+    if (distInt2 < 900) {
       await Detour.updateOne(
         { _id: mongoose.Types.ObjectId(req.query.ID), picked: true },
         {
