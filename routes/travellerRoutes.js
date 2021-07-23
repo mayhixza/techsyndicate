@@ -38,7 +38,7 @@ router.get("/detours", checkInTour, async (req, res) => {
 
     // let distInt = 125;
 
-    if (distInt < 1000) {
+    if (distInt < 5000) {
       const distData2 = await fetch(
         `https://apis.mapmyindia.com/advancedmaps/v1/9dafa78f7b63a4f0391967a5f43ee66f/distance_matrix/driving/${detour.dropLocation}%3B${drop}?region=IND&sources=0`,
         {
@@ -54,7 +54,7 @@ router.get("/detours", checkInTour, async (req, res) => {
 
       // let distInt2 = 125;
 
-      if (distInt2 < 1000) {
+      if (distInt2 < 5000) {
         detoursNear.push(detour);
       }
     }

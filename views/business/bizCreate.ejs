@@ -228,6 +228,10 @@
         document.querySelector(".ham").classList.toggle("hamActive");
         document.querySelector(".sideNav").classList.toggle("sideNavActive");
       });
+
+      for (let inp of document.querySelectorAll("input")) {
+        inp.setAttribute("autocomplete", "off");
+      }
     </script>
   </body>
 </html>
