@@ -240,4 +240,46 @@ router.get('/pick', async (req, res) => {
   res.json(distInt2);
 })
 
+router.get('/drop', async (req, res) => {
+  let pickLocELoc;
+  const detour = await Detour.findById(mongoose.Types.ObjectId(req.query.ID));
+  pickLocELoc = detour.dropLocation;
+  // const addressFetch = await fetch(
+  //   `https://apis.mapmyindia.com/advancedmaps/v1/9dafa78f7b63a4f0391967a5f43ee66f/rev_geocode?lat=${req.query.lat}&lng=${req.query.long}&region=IND`, {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: "Bearer f336ba0d-0c3e-4f0a-bf75-93365f4f6345",
+  //     },
+  //   }
+  // );
+  // const addressJson = await addressFetch.json()
+  // const addressString = addressJson.ressults[0].formatted_address;
+  // const eLocFetch = await fetch(
+  //   `https://atlas.mapmyindia.com/api/places/textsearch/json?query=${addressString}&region=IND&location=${req.query.lat}%2C${req.query.long}`, {
+  //     method: 'GET',
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: "Bearer f336ba0d-0c3e-4f0a-bf75-93365f4f6345",
+  //     },
+  //   }
+  // );
+  // const eLocJson = await eLocFetch.json()
+  // const eLoc = eLocJson.suggestedLocations[0].eLoc;
+  // const distData2 = await fetch(
+  // `https://apis.mapmyindia.com/advancedmaps/v1/9dafa78f7b63a4f0391967a5f43ee66f/distance_matrix/driving/${eLoc}%3B${pickLocELoc}?region=IND&sources=0`, {
+  //   method: "GET",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //     Authorization: "Bearer f336ba0d-0c3e-4f0a-bf75-93365f4f6345",
+  //   },
+  // }
+  // );
+  // let a2 = await distData2.json();
+  // let distInt2 = a2.results.distances[0][1];
+  let distInt2 = 125;
+  console.log(distInt2)
+  res.json(distInt2);
+})
+
 module.exports = router;

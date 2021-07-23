@@ -32,7 +32,7 @@
         <p>Picked up package?</p>
         <button class="btn" onclick="pkgPick(this)"><a href="#">Record Pick Up</a></button>
         <p>Delivered Package?</p>
-        <button class="btn"><a href="#">Record Delivery</a></button>
+        <button class="btn" onclick="pkgDrop(this)"><a href="#">Record Delivery</a></button>
       </div>
     </section>
     <script>
@@ -46,6 +46,15 @@
       }
       async function cb(b) {
         data = await window.fetch(`/traveller/pick?lat=${b.coords.latitude}&long=${b.coords.longitude}&ID=${detourID}`);
+        let om = await data.json();
+        console.log(om);
+        console.log(b);
+      }
+      function pkgDrop(a) {
+        navigator.geolocation.getCurrentPosition(cbd);
+      }
+      async function cbd(b) {
+        data = await window.fetch(`/traveller/drop?lat=${b.coords.latitude}&long=${b.coords.longitude}&ID=${detourID}`);
         let om = await data.json();
         console.log(om);
         console.log(b);
