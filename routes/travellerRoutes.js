@@ -183,7 +183,7 @@ router.get("/drop", async (req, res) => {
       }
     );
     const addressJson = await addressFetch.json();
-    const addressString = addressJson.ressults[0].formatted_address;
+    const addressString = addressJson.results[0].formatted_address;
     const eLocFetch = await fetch(
       `https://atlas.mapmyindia.com/api/places/textsearch/json?query=${addressString}&region=IND&location=${req.query.lat}%2C${req.query.long}`,
       {
@@ -236,9 +236,11 @@ router.get("/drop", async (req, res) => {
 
       res.json({ done: true });
     } else {
+      console.log("Not actually near");
       res.json({ done: false });
     }
   } catch (err) {
+    console.log(err);
     res.json({ done: false });
   }
 });

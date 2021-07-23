@@ -34,7 +34,11 @@
 
       <div class="options">
         <p>Picked up package?</p>
-        <button class="btn pickBtn" onclick="pkgPick(this)">
+        <% if (detour.picked) { %>
+          <button class="btn pickBtn" style="opacity: 0.7; pointer-events: none" onclick="pkgPick(this)">
+        <% } else { %>
+          <button class="btn pickBtn" onclick="pkgPick(this)">
+        <% } %>
           <a href="#">Record Pick Up</a>
         </button>
         <p>Delivered Package?</p>
