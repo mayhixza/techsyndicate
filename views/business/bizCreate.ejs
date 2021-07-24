@@ -71,6 +71,7 @@
         <div class="input-wrap">
           <form class="input-icons" action="/business/create" method="POST">
             <h1>Set up Detour</h1>
+            <i class="fa fa-spinner load"></i>
             <div class="input">
               <i class="fa fa-truck icon"></i>
               <select required class="input-field" name="type">
@@ -144,10 +145,13 @@
     <script>
       let res;
       let timeout;
+      let load = document.querySelector(".load");
       function result(str, id, pick) {
         if (timeout) {
           clearTimeout(timeout);
+          load.classList.remove("loadA");
         }
+        load.classList.add("loadA");
         timeout = setTimeout(function () {
           for (let div of document.querySelectorAll(".dropdownPick div")) {
             div.remove();
@@ -174,6 +178,7 @@
           }
           document.querySelector(".dropdownPick").classList.add("gayab");
           document.querySelector(".dropdownDrop").classList.add("gayab");
+          load.classList.remove("loadA");
 
           return;
         } else {
@@ -190,6 +195,8 @@
               const div = document.createElement("DIV");
               div.textContent = element.placeName + ", " + element.placeAddress;
               div.id = element.eLoc;
+              load.classList.remove("loadA");
+
               if (pick) {
                 document.querySelector(".dropdownPick").append(div);
                 document
@@ -209,6 +216,7 @@
                     div.id;
 
                   div.parentElement.classList.add("gayab");
+                  load.classList.remove("loadA");
                 });
               }
 
@@ -219,6 +227,7 @@
                     div.id;
 
                   div.parentElement.classList.add("gayab");
+                  load.classList.remove("loadA");
                 });
               }
             });

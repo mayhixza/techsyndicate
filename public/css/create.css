@@ -17,3 +17,27 @@ select {
   border-radius: 10px;
   margin-top: 4vh;
 }
+.load {
+  font-size: 3vh !important;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: rot 1s linear infinite;
+  opacity: 0;
+}
+@keyframes rot {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.loadA {
+  opacity: 1;
+}
+.err {
+  margin-top: 2.3vh;
+}

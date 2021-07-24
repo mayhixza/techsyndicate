@@ -37,7 +37,7 @@ body {
 h1 {
   margin-top: 12vh;
   font-size: 10vw;
-  margin-bottom: 3vh;
+  margin-bottom: 7vh;
 }
 
 .input-wrap {
@@ -73,7 +73,7 @@ h1 {
   border: 0;
   padding: 1vh 3vh;
   border-radius: 5px;
-  margin-bottom: 5vh;
+  margin-bottom: 2vh;
   margin-top: 3vh;
   color: #fff;
 }
@@ -116,4 +116,26 @@ h1 {
 }
 .showErr {
   color: var(--red);
+}
+
+.load {
+  font-size: 3vh !important;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: rot 1s linear infinite;
+  opacity: 0;
+}
+@keyframes rot {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.loadA {
+  opacity: 1;
 }
