@@ -75,6 +75,7 @@
               <input
                 class="input-field"
                 type="text"
+                required
                 placeholder="Enter start location"
                 id="pickLoc"
                 name="pickLocation"
@@ -89,6 +90,7 @@
                 class="input-field"
                 type="text"
                 id="dropLoc"
+                required
                 name="dropLocation"
                 placeholder="Enter end location"
                 onkeyup="result(this.value, 'livesearchdrop', false)"
@@ -96,15 +98,15 @@
               <div class="dropdown dropdownDrop gayab"></div>
             </div>
 
-            <input type="text" name="pickeLoc" style="display: none" />
-            <input type="text" name="dropeLoc" style="display: none" />
+            <input type="text" required name="pickeLoc" style="display: none" />
+            <input type="text" required name="dropeLoc" style="display: none" />
 
             <button class="btn" type="submit">Find Detours</button>
           </form>
         </div>
       </div>
     </section>
-    
+
     <script>
       let res;
       let timeout;
@@ -196,7 +198,7 @@
       });
 
       for (let inp of document.querySelectorAll("input")) {
-        inp.setAttribute("autocomplete", "off")
+        inp.setAttribute("autocomplete", "off");
       }
     </script>
   </body>
