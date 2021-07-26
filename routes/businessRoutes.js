@@ -42,7 +42,7 @@ router.post("/create", async (req, res) => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer f336ba0d-0c3e-4f0a-bf75-93365f4f6345",
+        Authorization: `Bearer ${process.env.API_KEY}`,
       },
     }
   );
@@ -55,7 +55,7 @@ router.post("/create", async (req, res) => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer f336ba0d-0c3e-4f0a-bf75-93365f4f6345",
+        Authorization: `Bearer ${process.env.API_KEY}`,
       },
     }
   );
@@ -74,7 +74,7 @@ router.post("/create", async (req, res) => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer f336ba0d-0c3e-4f0a-bf75-93365f4f6345",
+        Authorization: `Bearer ${process.env.API_KEY}`,
       },
     }
   );
@@ -118,7 +118,7 @@ router.post("/search", async (req, res) => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer f336ba0d-0c3e-4f0a-bf75-93365f4f6345",
+        Authorization: `Bearer ${process.env.API_KEY}`,
       },
     }
   );
