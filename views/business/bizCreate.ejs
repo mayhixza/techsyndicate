@@ -190,6 +190,7 @@
           method: "POST",
           contentType: "application/json",
           data: JSON.stringify({ search: str }),
+          error: errorify(),
           success: function (result) {
             result.forEach((element) => {
               const div = document.createElement("DIV");
@@ -233,6 +234,19 @@
             });
           },
         });
+      }
+
+      function errorify() {
+        document.querySelector(".err").textContent =
+          "Our API might have some issues";
+
+        document.querySelector(".err").classList.add("showErr");
+
+        setTimeout(() => {
+          document.querySelector(".err").textContent = "Address too small";
+
+          document.querySelector(".err").classList.remove("showErr");
+        }, 7000);
       }
 
       document.querySelector(".ham").addEventListener("click", () => {

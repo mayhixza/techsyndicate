@@ -109,30 +109,34 @@ router.post("/create", async (req, res) => {
 });
 
 router.post("/search", async (req, res) => {
-  const arr = [];
-  const search = req.query.srch;
-  const returnstr = "";
-  const json = await fetch(
-    `https://atlas.mapmyindia.com/api/places/search/json?query=${search}`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.API_KEY}`,
-      },
+  try {
+    const arr = [];
+    const search = req.query.srch;
+    const returnstr = "";
+    const json = await fetch(
+      `https://atlas.mapmyindia.com/api/places/search/json?query=${search}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${process.env.API_KEY}`,
+        },
+      }
+    );
+    let r = await json.json();
+    console.log(r);
+    if (r.suggestedLocations == []) {
+      res.status(404).json("not found lmfao");
     }
-  );
-  let r = await json.json();
-  console.log(r);
-  if (r.suggestedLocations == []) {
-    res.status(404).json("not found lmfao");
-  }
-  for (var i = 0; i < 5 && r.suggestedLocations.length; i++) {
-    var obj = r.suggestedLocations[i];
-    arr.push(obj);
-  }
+    for (var i = 0; i < 5 && r.suggestedLocations.length; i++) {
+      var obj = r.suggestedLocations[i];
+      arr.push(obj);
+    }
 
-  res.json(arr);
+    res.json(arr);
+  } catch (err) {
+    res.json({ err: err }).status(400);
+  }
 
   // res.json([
   //   {
