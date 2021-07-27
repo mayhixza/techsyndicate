@@ -169,47 +169,55 @@
           method: "POST",
           contentType: "application/json",
           data: JSON.stringify({ search: str }),
-          error: errorify(),
-          success: function (result) {
-            result.forEach((element) => {
-              const div = document.createElement("DIV");
-              div.textContent = element.placeName + ", " + element.placeAddress;
-              div.id = element.eLoc;
-              load.classList.remove("loadA");
-              if (pick) {
-                document.querySelector(".dropdownPick").append(div);
-                document
-                  .querySelector(".dropdownPick")
-                  .classList.remove("gayab");
-              } else {
-                document.querySelector(".dropdownDrop").append(div);
-                document
-                  .querySelector(".dropdownDrop")
-                  .classList.remove("gayab");
-              }
+          success: async function (result) {
+            try {
+              result.forEach((element) => {
+                const div = document.createElement("DIV");
+                div.textContent =
+                  element.placeName + ", " + element.placeAddress;
+                div.id = element.eLoc;
+                load.classList.remove("loadA");
+                if (pick) {
+                  document.querySelector(".dropdownPick").append(div);
+                  document
+                    .querySelector(".dropdownPick")
+                    .classList.remove("gayab");
+                } else {
+                  document.querySelector(".dropdownDrop").append(div);
+                  document
+                    .querySelector(".dropdownDrop")
+                    .classList.remove("gayab");
+                }
 
-              for (let div of document.querySelectorAll(".dropdownPick div")) {
-                div.addEventListener("click", () => {
-                  document.querySelector("#pickLoc").value = div.textContent;
-                  document.querySelector("input[name='pickeLoc']").value =
-                    div.id;
+                for (let div of document.querySelectorAll(
+                  ".dropdownPick div"
+                )) {
+                  div.addEventListener("click", () => {
+                    document.querySelector("#pickLoc").value = div.textContent;
+                    document.querySelector("input[name='pickeLoc']").value =
+                      div.id;
 
-                  div.parentElement.classList.add("gayab");
-                  load.classList.remove("loadA");
-                });
-              }
+                    div.parentElement.classList.add("gayab");
+                    load.classList.remove("loadA");
+                  });
+                }
 
-              for (let div of document.querySelectorAll(".dropdownDrop div")) {
-                div.addEventListener("click", () => {
-                  document.querySelector("#dropLoc").value = div.textContent;
-                  document.querySelector("input[name='dropeLoc']").value =
-                    div.id;
+                for (let div of document.querySelectorAll(
+                  ".dropdownDrop div"
+                )) {
+                  div.addEventListener("click", () => {
+                    document.querySelector("#dropLoc").value = div.textContent;
+                    document.querySelector("input[name='dropeLoc']").value =
+                      div.id;
 
-                  div.parentElement.classList.add("gayab");
-                  load.classList.remove("loadA");
-                });
-              }
-            });
+                    div.parentElement.classList.add("gayab");
+                    load.classList.remove("loadA");
+                  });
+                }
+              });
+            } catch (err) {
+              errorify();
+            }
           },
         });
       }
