@@ -29,7 +29,7 @@ router.get("/detours", checkInTour, async (req, res) => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.API_KEY}`,
+          Authorization: 'Bearer a038ca9a-2d12-4a5a-a137-3f87b431d758',
         },
       }
     );
@@ -45,7 +45,7 @@ router.get("/detours", checkInTour, async (req, res) => {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${process.env.API_KEY}`,
+            Authorization: 'Bearer a038ca9a-2d12-4a5a-a137-3f87b431d758',
           },
         }
       );
@@ -115,7 +115,7 @@ router.get("/pick", async (req, res) => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.API_KEY}`,
+        Authorization: 'Bearer a038ca9a-2d12-4a5a-a137-3f87b431d758',
       },
     }
   );
@@ -127,7 +127,7 @@ router.get("/pick", async (req, res) => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.API_KEY}`,
+        Authorization: 'Bearer a038ca9a-2d12-4a5a-a137-3f87b431d758',
       },
     }
   );
@@ -139,7 +139,7 @@ router.get("/pick", async (req, res) => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.API_KEY}`,
+        Authorization: 'Bearer a038ca9a-2d12-4a5a-a137-3f87b431d758',
       },
     }
   );
@@ -178,7 +178,7 @@ router.get("/drop", async (req, res) => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.API_KEY}`,
+          Authorization: 'Bearer a038ca9a-2d12-4a5a-a137-3f87b431d758',
         },
       }
     );
@@ -190,7 +190,7 @@ router.get("/drop", async (req, res) => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.API_KEY}`,
+          Authorization: 'Bearer a038ca9a-2d12-4a5a-a137-3f87b431d758',
         },
       }
     );
@@ -202,7 +202,7 @@ router.get("/drop", async (req, res) => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.API_KEY}`,
+          Authorization: 'Bearer a038ca9a-2d12-4a5a-a137-3f87b431d758',
         },
       }
     );
@@ -261,7 +261,7 @@ router.post("/search", checkInTour, async (req, res) => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.API_KEY}`,
+        Authorization: 'Bearer a038ca9a-2d12-4a5a-a137-3f87b431d758',
       },
     }
   );
